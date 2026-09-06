@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Googlebot & Naver Yeti crawler optimization
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+Sitemap: https://samsung0409-lee.github.io/MTS/sitemap.xml
