@@ -1,11 +1,18 @@
 User-agent: *
 Allow: /
 
-# Googlebot & Naver Yeti crawler optimization
+# Search Engine Crawlers Optimization (Googlebot, Naver Yeti, Daumoa, Bingbot)
 User-agent: Googlebot
 Allow: /
 
 User-agent: Yeti
 Allow: /
 
+User-agent: Daumoa
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+# Canonical XML Sitemap & RSS Feed
 Sitemap: https://samsung0409-lee.github.io/MTS/sitemap.xml

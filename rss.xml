@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MTS 중학교 시험 학습 - 중3 과학 생식과 유전</title>
+    <link>https://samsung0409-lee.github.io/MTS/</link>
+    <description>청계중학교 3학년 2학기 과학 5단원 '생식과 유전' 핵심 정리, 단어장, TTS 음성 듣기, 실전 객관식 시험, 자동 오답노트를 제공하는 중학교 맞춤형 과학 학습 플랫폼</description>
+    <language>ko-KR</language>
+    <pubDate>Sat, 19 Sep 2026 00:00:00 +0900</pubDate>
+    <lastBuildDate>Sat, 19 Sep 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://samsung0409-lee.github.io/MTS/rss.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>samsung0409.lee@gmail.com (MTS 관리자)</managingEditor>
+    <webMaster>samsung0409.lee@gmail.com (MTS 웹마스터)</webMaster>
+
+    <item>
+      <title>[핵심정리] 중3 과학 5단원 생식과 유전 단어장 및 핵심 용어 16선</title>
+      <link>https://samsung0409-lee.github.io/MTS/#vocab</link>
+      <guid isPermaLink="false">https://samsung0409-lee.github.io/MTS/#vocab-20260919</guid>
+      <pubDate>Sat, 19 Sep 2026 00:00:00 +0900</pubDate>
+      <description>세포 분열, 염색체, 염색 분체, 유전자, 체세포 분열, 감수 분열, 상동 염색체, 난할 등 5단원 핵심 과학 용어 16개 완벽 정리 및 음성 듣기(TTS) 지원</description>
+      <category>중3 과학</category>
+    </item>
+
+    <item>
+      <title>[학습자료] 중3 과학 5단원 체세포 분열 vs 감수 분열 완벽 비교 및 상세 해설</title>
+      <link>https://samsung0409-lee.github.io/MTS/#study</link>
+      <guid isPermaLink="false">https://samsung0409-lee.github.io/MTS/#study-20260919</guid>
+      <pubDate>Sat, 19 Sep 2026 00:00:00 +0900</pubDate>
+      <description>세포 분열이 필요한 이유, 염색체와 유전자의 구조, 체세포 분열 과정(전기·중기·후기·말기), 감수 분열과 상동 염색체 분리, 수정란의 난할과 발생 총정리</description>
+      <category>중3 과학</category>
+    </item>
+
+    <item>
+      <title>[실전시험] 중3 과학 5단원 생식과 유전 실전 객관식 20제 및 자동 오답노트</title>
+      <link>https://samsung0409-lee.github.io/MTS/#test</link>
+      <guid isPermaLink="false">https://samsung0409-lee.github.io/MTS/#test-20260919</guid>
+      <pubDate>Sat, 19 Sep 2026 00:00:00 +0900</pubDate>
+      <description>청계중학교 기출 및 비상교육 교과서 성취기준 반영 실전 20문제, 자동 채점 시스템, 틀린 문제 자동 오답노트 누적 기능 제공</description>
+      <category>중3 과학 시험</category>
+    </item>
+
+    <item>
+      <title>[스타일AI] AI 퍼스널 스타일리스트 및 체형 맞춤 진단 서비스</title>
+      <link>https://samsung0409-lee.github.io/MTS/index_second.html</link>
+      <guid isPermaLink="false">https://samsung0409-lee.github.io/MTS/index_second.html-20260919</guid>
+      <pubDate>Sat, 19 Sep 2026 00:00:00 +0900</pubDate>
+      <description>사진 1장과 신체 스펙으로 찾는 인생 핏과 퍼스널 컬러, 나만의 시그니처 실루엣 맞춤 진단 AI 큐레이션</description>
+      <category>AI 서비스</category>
+    </item>
+  </channel>
+</rss>
