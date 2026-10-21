@@ -1,5 +1,18 @@
 window.UNITS = [
  {
+  "id": "e01",
+  "subject": "etc",
+  "chapter": "기타",
+  "title": "index",
+  "thumb": null,
+  "files": {
+   "app": "index.html"
+  },
+  "size": {
+   "app": 0.0
+  }
+ },
+ {
   "id": "m01",
   "subject": "math",
   "chapter": "4단원 1",
@@ -137,12 +150,14 @@ window.UNITS = [
   "thumb": "thumbs/s02.jpg",
   "files": {
    "audio": "과학3 비상(임태훈)_중3과학_3-2(112~126).m4a",
+   "video": "과학3 비상(임태훈)_중3과학_3-2(112~126).mp4",
    "pdf": "과학3 비상(임태훈)_중3과학_3-2(112~126).pdf",
    "img": "과학3 비상(임태훈)_중3과학_3-2(112~126).png",
    "pptx": "과학3 비상(임태훈)_중3과학_3-2(112~126).pptx"
   },
   "size": {
    "audio": 40.7,
+   "video": 19.4,
    "pdf": 17.8,
    "img": 5.0,
    "pptx": 20.2
@@ -302,12 +317,20 @@ window.UNITS = [
   "subject": "social",
   "chapter": "11장",
   "title": "세계 속의 우리나라",
-  "thumb": null,
+  "thumb": "thumbs/s04.jpg",
   "files": {
-   "pdf": "사회 11장 세계 속의 우리나라.pdf"
+   "audio": "사회 11장 세계 속의 우리나라.m4a",
+   "video": "사회 11장 세계 속의 우리나라.mp4",
+   "pdf": "사회 11장 세계 속의 우리나라.pdf",
+   "img": "사회 11장 세계 속의 우리나라.png",
+   "pptx": "사회 11장 세계 속의 우리나라.pptx"
   },
   "size": {
-   "pdf": 2.9
+   "audio": 25.8,
+   "video": 24.2,
+   "pdf": 2.9,
+   "img": 5.4,
+   "pptx": 17.5
   }
  }
 ];
