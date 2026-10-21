@@ -1,0 +1,545 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>청계중학교 3학년 사회 - 3장 경제생활과 선택</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: '맑은 고딕', 'Malgun Gothic', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  header {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  header h1 { color: #4a4a8e; font-size: 1.8em; margin-bottom: 8px; }
+  header p { color: #777; font-size: 0.95em; }
+
+  nav {
+    display: flex;
+    gap: 10px;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    flex-wrap: wrap;
+  }
+  nav button {
+    flex: 1;
+    min-width: 130px;
+    padding: 14px 10px;
+    border: none;
+    background: #f0f2ff;
+    color: #4a4a8e;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.2s;
+  }
+  nav button:hover { background: #4a4a8e; color: white; transform: translateY(-2px); }
+  nav button.active { background: #4a4a8e; color: white; }
+
+  .tab-content {
+    display: none;
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    animation: fadeIn 0.3s;
+  }
+  .tab-content.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to {opacity:1; transform: translateY(0);} }
+
+  h2 { color: #4a4a8e; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #f0f2ff; }
+  h3 { color: #6a6aaa; margin: 18px 0 10px; }
+
+  .card {
+    background: #fafbff;
+    border-left: 4px solid #667eea;
+    padding: 16px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+  }
+  .card .term { font-weight: bold; color: #4a4a8e; font-size: 1.1em; }
+  .card .desc { margin-top: 6px; line-height: 1.6; }
+
+  .btn {
+    background: #667eea; color: white; border: none;
+    padding: 8px 14px; border-radius: 6px;
+    cursor: pointer; font-size: 0.9em; margin: 4px 2px;
+  }
+  .btn:hover { background: #4a4a8e; }
+  .btn.tts { background: #28a745; }
+  .btn.tts:hover { background: #1e7e34; }
+  .btn.zoom { background: #ffc107; color: #333; }
+  .btn.zoom:hover { background: #e0a800; }
+
+  .img-box {
+    display: inline-block;
+    width: 120px; height: 100px;
+    margin: 8px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background: #f0f2ff;
+    cursor: pointer;
+    text-align: center;
+    line-height: 100px;
+    font-size: 2.5em;
+    transition: transform 0.2s;
+  }
+  .img-box:hover { transform: scale(1.05); border-color: #667eea; }
+  .img-label { display: block; font-size: 0.8em; line-height: 1.2; padding: 0 4px; margin-top: -78px; }
+
+  .question {
+    background: #fafbff;
+    padding: 18px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #e0e0f0;
+  }
+  .question p { margin-bottom: 12px; font-weight: 500; }
+  .options label {
+    display: block; padding: 8px 12px; margin: 4px 0;
+    background: white; border: 1px solid #ddd; border-radius: 6px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .options label:hover { background: #f0f2ff; border-color: #667eea; }
+  .options input { margin-right: 8px; }
+  .options label.correct { background: #d4edda; border-color: #28a745; }
+  .options label.wrong { background: #f8d7da; border-color: #dc3545; }
+  .explanation {
+    margin-top: 10px; padding: 10px;
+    background: #fff3cd; border-radius: 6px;
+    font-size: 0.9em; display: none;
+  }
+
+  .wrong-item {
+    background: #fff5f5;
+    border-left: 4px solid #dc3545;
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+  }
+  .wrong-item .q { font-weight: bold; margin-bottom: 6px; }
+  .wrong-item .your { color: #dc3545; }
+  .wrong-item .correct { color: #28a745; }
+
+  .study-section { margin-bottom: 20px; }
+  .study-section h3 { background: #f0f2ff; padding: 10px; border-radius: 6px; }
+
+  /* 모달 */
+  .modal {
+    display: none; position: fixed; top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000; justify-content:center; align-items:center;
+  }
+  .modal.show { display: flex; }
+  .modal-content {
+    background: white; padding: 30px;
+    border-radius: 16px; max-width: 600px;
+    width: 90%; text-align: center; position: relative;
+  }
+  .modal-content .big-img {
+    width: 100%; height: 300px;
+    background: #f0f2ff; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 6em; margin-bottom: 16px;
+  }
+  .modal-close {
+    position: absolute; top: 10px; right: 16px;
+    background: none; border: none;
+    font-size: 1.5em; cursor: pointer;
+  }
+  .score-box {
+    text-align: center; padding: 20px;
+    background: linear-gradient(135deg, #f0f2ff, #ffe8e8);
+    border-radius: 12px; margin-bottom: 20px;
+  }
+  .score-box .score { font-size: 2.5em; font-weight: bold; color: #4a4a8e; }
+  .term-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  @media (max-width: 600px) {
+    nav button { font-size: 0.9em; padding: 10px 6px; }
+    .term-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>📚 청계중학교 3학년 사회 - 3장 경제생활과 선택</h1>
+    <p>초등학생도 쉽게! TTS 지원 📢 / 시험 대비 / 오답 자동 저장</p>
+  </header>
+
+  <nav>
+    <button class="active" data-tab="vocab">📖 단어장</button>
+    <button data-tab="study">📝 학습하기</button>
+    <button data-tab="test">✏️ 시험보기</button>
+    <button data-tab="wrong">❌ 오답노트</button>
+  </nav>
+
+  <!-- 단어장 -->
+  <div id="vocab" class="tab-content active">
+    <h2>📖 단어장 (용어 암기)</h2>
+    <p style="margin-bottom:16px; color:#666;">💡 용어 카드를 클릭하면 <b>TTS로 읽어주고</b>, 그림을 누르면 <b>확대</b>됩니다.</p>
+    <div class="term-list" id="vocabList"></div>
+  </div>
+
+  <!-- 학습하기 -->
+  <div id="study" class="tab-content">
+    <h2>📝 학습하기</h2>
+    <p style="margin-bottom:16px;">단원별로 정리한 뒤 바로 <b>간단 점검</b>을 풀어보세요.</p>
+    <div id="studyContent"></div>
+  </div>
+
+  <!-- 시험보기 -->
+  <div id="test" class="tab-content">
+    <h2>✏️ 시험보기 (중학교 시험 대비)</h2>
+    <div class="score-box">
+      <div>현재 점수</div>
+      <div class="score" id="currentScore">0</div>
+      <div>문제 / <span id="totalQ">0</span></div>
+    </div>
+    <div id="testContent"></div>
+    <div style="text-align:center; margin-top:20px;">
+      <button class="btn" onclick="submitTest()">제출하기</button>
+      <button class="btn" onclick="resetTest()">다시 풀기</button>
+    </div>
+  </div>
+
+  <!-- 오답노트 -->
+  <div id="wrong" class="tab-content">
+    <h2>❌ 오답노트</h2>
+    <p style="margin-bottom:16px; color:#666;">틀린 문제는 자동으로 여기에 저장됩니다.</p>
+    <div id="wrongList"></div>
+    <button class="btn" onclick="clearWrong()">오답노트 비우기</button>
+  </div>
+</div>
+
+<!-- 이미지 확대 모달 -->
+<div class="modal" id="imgModal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="big-img" id="modalImg">💰</div>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc" style="text-align:left; line-height:1.6;"></p>
+    <button class="btn tts" onclick="tts(document.getElementById('modalTitle').innerText + '. ' + document.getElementById('modalDesc').innerText)">🔊 설명 듣기</button>
+  </div>
+</div>
+
+<script>
+/* ===============================
+   데이터: 3장 경제생활과 선택
+   (교과서 표준 교육과정 기반)
+=============================== */
+const vocabData = [
+  { term:"경제", icon:"💰", desc:"사람들이 원하는 것을 만들고 나누고 사용하는 활동 전체를 말해요. 쉽게 말해 '돈과 물건을 주고받는 생활'이에요." },
+  { term:"희소성", icon:"🌟", desc:"사람의 욕구는 끝이 없지만, 이를 충족시킬 자원은 한정되어 있다는 뜻이에요. 그래서 '골라야' 하는 문제가 생겨요." },
+  { term:"선택", icon:"✅", desc:"한정된 자원으로 무엇을 만들지, 어떻게 쓸지 정하는 것을 말해요." },
+  { term:"기회비용", icon:"🎁", desc:"어떤 것을 선택할 때, 포기한 것 중에서 가장 큰 가치를 가진 것을 말해요. (예: 용돈 1만원으로 영화 vs 만화 → 포기한 쪽이 기회비용)" },
+  { term:"합리적 선택", icon:"🧠", desc:"기회비용을 비교해서 본인에게 더 큰 만족을 주는 쪽을 고르는 것을 말해요." },
+  { term:"생산", icon:"🏭", desc:"사람이 원하는 재화나 서비스를 만들어내는 활동이에요." },
+  { term:"소비", icon:"🛍️", desc:"만들어진 재화나 서비스를 실제로 사용하는 것을 말해요." },
+  { term:"분배", icon:"🤝", desc:"생산된 재화나 서비스가 누구에게 얼마나 돌아갈지 나누는 활동을 말해요." },
+  { term:"재화", icon:"📦", desc:"사람의 욕구를 충족시켜주는 물건이에요. (예: 빵, 연필)" },
+  { term:"서비스", icon:"🛎️", desc:"물건은 아니지만 사람의 욕구를 충족시켜주는 활동이에요. (예: 미용, 학원 수업)" },
+  { term:"수요", icon:"🙋", desc:"소비자가 어떤 재화를 사려고 하는 '양과 의향'을 말해요. 가격이 싸지면 수요는 늘어요." },
+  { term:"공급", icon:"📤", desc:"생산자가 어떤 재화를 팔려고 하는 '양과 의향'을 말해요. 가격이 오르면 공급은 늘어요." },
+  { term:"시장", icon:"🏪", desc:"사고팔기가 이루어지는 장소를 말해요. 재화나 서비스가 오가는 곳이에요." },
+  { term:"가격", icon:"💵", desc:"재화나 서비스를 사고팔 때 정해지는 돈의 액수를 말해요." },
+  { term:"수요와 공급의 법칙", icon:"⚖️", desc:"가격이 오르면 수요는 줄고 공급은 늘어나는 관계를 말해요." },
+  { term:"시장경제", icon:"📈", desc:"시장에서 수요와 공급에 따라 가격이 결정되고, 자원도 분배되는 경제 체제를 말해요." },
+  { term:"계획경제", icon:"📋", desc:"정부가 생산·분배·가격을 직접 정해서 운영하는 경제 체제를 말해요." },
+  { term:"혼합경제", icon:"🔀", desc:"시장경제와 계획경제를 섞은 체제로, 시장과 정부 모두 자원을 배분해요." },
+  { term:"기업", icon:"🏢", desc:"이윤을 얻기 위해 재화나 서비스를 생산하는 조직을 말해요." },
+  { term:"시장 실패", icon:"⚠️", desc:"시장 기능만으로는 해결이 안 되는 문제(환경오염, 공해 등)가 생기는 현상이에요." },
+  { term:"외부효과", icon:"🌳", desc:"생산·소비 활동이 제3자에게 의도치 않은 영향을 주는 것을 말해요. 좋으면 '긍정적', 나쁘면 '부정적'이에요." },
+  { term:"공공재", icon:"🚦", desc:"누구나 함께 쓸 수 있고, 한 사람이 써도 남들이 못 쓰지 않는 재화예요. (예: 가로등, 도로)" },
+  { term:"경제 성장", icon:"📊", desc:"한 나라가 일정 기간 동안 생산하는 재화와 서비스의 양이 늘어나는 것을 말해요." },
+  { term:"인플레이션", icon:"🎈", desc:"물가가 전반적으로 계속 오르는 현상이에요. 돈의 가치가 떨어져요." },
+  { term:"실업", icon:"😟", desc:"일을 하고 싶지만 일자리를 구하지 못한 상태를 말해요." }
+];
+
+/* 학습 단원 (교과서 구성 기반) */
+const studyData = [
+  {
+    title:"1. 경제생활의 이해",
+    points:[
+      "경제활동은 생산 → 분배 → 소비의 흐름으로 이루어져요.",
+      "희소성 때문에 우리는 선택해야 하고, 그때 기회비용이 발생해요.",
+      "합리적 소비자는 기회비용을 비교해 더 큰 만족을 주는 선택을 해요."
+    ],
+    quiz:{ q:"용돈 1만 원을 영화와 만화 중 영화에 썼을 때, 기회비용은?", options:["영화의 가격","만화를 보지 못한 만족","용돈 자체","영화관에 간 시간"], a:1 }
+  },
+  {
+    title:"2. 시장과 가격",
+    points:[
+      "시장은 수요자와 공급자가 만나 가격을 정하는 곳이에요.",
+      "수요와 공급의 법칙: 가격↑ → 수요↓, 공급↑",
+      "균형 가격: 수요량과 공급량이 같아지는 가격이에요."
+    ],
+    quiz:{ q:"가격이 오르면 공급량은 어떻게 될까?", options:["줄어든다","늘어난다","변하지 않는다","없어진다"], a:1 }
+  },
+  {
+    title:"3. 시장경제와 경제 체제",
+    points:[
+      "시장경제: 시장의 보이지 않는 손(수요·공급)이 자원 배분을 결정해요.",
+      "계획경제: 정부가 중심이 되어 결정해요.",
+      "혼합경제: 시장 + 정부, 대부분의 나라가 이 방식을 채택해요."
+    ],
+    quiz:{ q:"우리나라는 어떤 경제 체제를 주로 채택할까?", options:["계획경제","시장경제","혼합경제","전혀 없음"], a:2 }
+  },
+  {
+    title:"4. 기업의 역할과 시장 실패",
+    points:[
+      "기업은 이윤을 위해 재화·서비스를 생산해요.",
+      "시장 실패: 환경오염, 공공재 부족, 정보 비대칭 등이 있어요.",
+      "정부는 세금·보조금·규제 등으로 시장 실패를 바로잡아요."
+    ],
+    quiz:{ q:"다음 중 공공재의 예로 가장 알맞은 것은?", options:["사과","가로등","핸드폰","옷"], a:1 }
+  },
+  {
+    title:"5. 경제 문제와 정책",
+    points:[
+      "인플레이션: 물가가 전반적으로 오르는 것 → 화폐 가치 하락.",
+      "실업: 일할 의사가 있는데 일자리가 없는 상태.",
+      "정부는 재정·금융 정책을 통해 물가와 실업을 안정시켜요."
+    ],
+    quiz:{ q:"물가가 전반적으로 계속 오르는 현상은?", options:["인플레이션","실업","성장","공급"], a:0 }
+  }
+];
+
+/* 시험 문항 (중학교 시험 빈출) */
+const testData = [
+  { q:"희소성의 의미로 가장 알맞은 것은?", options:["욕구와 자원이 모두 무한한 상태","자원은 한정되어 있고 욕구는 무한한 상태","돈이 많은 상태","물건이 남는 상태"], a:1, exp:"희소성은 자원은 한정되어 있는데 욕구는 무한해 골라야 한다는 뜻이에요." },
+  { q:"다음 중 서비스에 해당하는 것은?", options:["빵","연필","미용실 이용","운동화"], a:2, exp:"서비스는 물건이 아니라 활동으로 욕구를 채우는 것이에요." },
+  { q:"가격이 내려가면 수요량은 어떻게 될까?", options:["줄어든다","늘어난다","변하지 않는다","0이 된다"], a:1, exp:"수요 법칙: 가격↓ → 수요량↑" },
+  { q:"균형 가격이란?", options:["공급량 > 수요량일 때 가격","수요량 = 공급량일 때 가격","정부가 정한 가격","공짜 가격"], a:1, exp:"수요량과 공급량이 같아지는 가격이 균형 가격이에요." },
+  { q:"시장이 '보이지 않는 손'에 의해 자원 배분을 결정하는 체제는?", options:["계획경제","시장경제","전통경제","혼합경제"], a:1, exp:"아담 스미스가 말한 시장경제의 특징이에요." },
+  { q:"다음 중 공공재의 특징이 아닌 것은?", options:["대부분 무료로 제공","경쟁성이 낮음","배제성이 낮음","개인만 사용하는 성격"], a:3, exp:"공공재는 누구나 함께 쓸 수 있는 재화예요." },
+  { q:"정부가 물가를 안정시키기 위해 쓰는 재정 정책에 해당하는 것은?", options:["기준금리 조정","통화량 조절","세금과 정부 지출","환율 변동"], a:2, exp:"재정 정책은 세금·지출로 경제를 조절해요." },
+  { q:"기회비용에 대한 설명으로 옳은 것은?", options:["선택한 것의 가격","포기한 것 중 가장 큰 가치","무조건 돈","저축 이자"], a:1, exp:"기회비용은 포기한 것 중 가장 큰 가치예요." },
+  { q:"시장 실패의 예로 가장 적절한 것은?", options:["가격 변동","수요 변화","환경 오염","기업 이윤"], a:2, exp:"환경 오염은 시장이 해결 못 하는 대표적 시장 실패예요." },
+  { q:"인플레이션의 결과로 옳은 것은?", options:["화폐 가치 상승","물가 하락","화폐 가치 하락","실업 0%"], a:2, exp:"인플레이션은 물가가 오르고 돈의 가치가 떨어져요." }
+];
+
+/* ===============================
+   기능 함수
+=============================== */
+let userAnswers = new Array(testData.length).fill(null);
+let wrongAnswers = JSON.parse(localStorage.getItem('wrongAnswers') || '[]');
+
+/* 단어장 렌더링 */
+function renderVocab() {
+  const list = document.getElementById('vocabList');
+  list.innerHTML = vocabData.map((v,i)=>`
+    <div class="card">
+      <div class="term">${v.term}</div>
+      <div class="img-box" onclick="openModal(${i})" title="클릭하면 확대">${v.icon}<span class="img-label">${v.term}</span></div>
+      <div class="desc">${v.desc}</div>
+      <div style="margin-top:10px;">
+        <button class="btn tts" onclick="tts('${v.term}. ${v.desc.replace(/'/g,"")}')">🔊 TTS</button>
+        <button class="btn" onclick="tts('${v.term}')">📢 용어만 듣기</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* 학습하기 렌더링 */
+function renderStudy() {
+  const c = document.getElementById('studyContent');
+  c.innerHTML = studyData.map((s,si)=>`
+    <div class="study-section">
+      <h3>${s.title}</h3>
+      <ul style="padding-left:24px; line-height:1.8;">
+        ${s.points.map(p=>`<li>${p}</li>`).join('')}
+      </ul>
+      <button class="btn tts" onclick="tts('${s.title}. ${s.points.join('. ')}')">🔊 단원 내용 듣기</button>
+      <div class="question" id="studyQuiz${si}">
+        <p><b>✅ 간단 점검:</b> ${s.quiz.q}</p>
+        <div class="options">
+          ${s.quiz.options.map((o,oi)=>`<label><input type="radio" name="sq${si}" value="${oi}"> ${o}</label>`).join('')}
+        </div>
+        <button class="btn" onclick="checkStudy(${si})">정답 확인</button>
+        <div class="explanation" id="sexp${si}">
+          ${s.quiz.a===0?s.quiz.options[0]:s.quiz.a===1?s.quiz.options[1]:s.quiz.a===2?s.quiz.options[2]:s.quiz.options[3]}이(가) 정답이에요.
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function checkStudy(i){
+  const sel = document.querySelector(`input[name="sq${i}"]:checked`);
+  if(!sel){ alert('보기를 선택하세요!'); return; }
+  const exp = document.getElementById(`sexp${i}`);
+  exp.style.display='block';
+  exp.innerHTML = (parseInt(sel.value)===studyData[i].quiz.a)
+    ? '🎉 정답이에요! ' + exp.textContent
+    : '😅 아쉬워요. 정답은 ' + studyData[i].quiz.options[studyData[i].quiz.a] + ' 이에요.';
+}
+
+/* 시험 렌더링 */
+function renderTest() {
+  document.getElementById('totalQ').textContent = testData.length;
+  const c = document.getElementById('testContent');
+  c.innerHTML = testData.map((q,qi)=>`
+    <div class="question" id="q${qi}">
+      <p><b>문제 ${qi+1}.</b> ${q.q} <button class="btn tts" onclick="tts('문제 ${qi+1}. ${q.q}')">🔊</button></p>
+      <div class="options">
+        ${q.options.map((o,oi)=>`<label id="q${qi}o${oi}"><input type="radio" name="q${qi}" value="${oi}" onchange="userAnswers[${qi}]=${oi}"> ${o}</label>`).join('')}
+      </div>
+      <div class="explanation" id="exp${qi}">${q.exp}</div>
+    </div>
+  `).join('');
+}
+
+function submitTest(){
+  let score = 0;
+  wrongAnswers = [];
+  testData.forEach((q,qi)=>{
+    const sel = userAnswers[qi];
+    testData[qi].options.forEach((_,oi)=>{
+      const el = document.getElementById(`q${qi}o${oi}`);
+      el.classList.remove('correct','wrong');
+      if(oi===q.a) el.classList.add('correct');
+      if(sel===oi && oi!==q.a) el.classList.add('wrong');
+    });
+    document.getElementById(`exp${qi}`).style.display='block';
+    if(sel===q.a){
+      score++;
+    } else {
+      wrongAnswers.push({
+        q: q.q,
+        your: sel!==null ? q.options[sel] : '미응답',
+        correct: q.options[q.a],
+        exp: q.exp
+      });
+    }
+  });
+  document.getElementById('currentScore').textContent = score;
+  localStorage.setItem('wrongAnswers', JSON.stringify(wrongAnswers));
+  alert(`채점 완료! ${testData.length}문제 중 ${score}문제 정답 (${Math.round(score/testData.length*100)}점)`);
+  renderWrong();
+}
+
+function resetTest(){
+  userAnswers = new Array(testData.length).fill(null);
+  document.getElementById('currentScore').textContent = 0;
+  renderTest();
+}
+
+/* 오답노트 */
+function renderWrong(){
+  const c = document.getElementById('wrongList');
+  if(wrongAnswers.length===0){
+    c.innerHTML = '<p style="color:#999; text-align:center; padding:30px;">아직 틀린 문제가 없어요. 시험을 풀어보세요! 😊</p>';
+    return;
+  }
+  c.innerHTML = wrongAnswers.map((w,i)=>`
+    <div class="wrong-item">
+      <div class="q">❓ ${w.q}</div>
+      <div>내가 고른 답: <span class="your">${w.your}</span></div>
+      <div>정답: <span class="correct">${w.correct}</span></div>
+      <div style="margin-top:6px; color:#555; font-size:0.9em;">💡 ${w.exp}</div>
+      <button class="btn tts" style="margin-top:8px;" onclick="tts('${w.q}. 정답은 ${w.correct}. ${w.exp.replace(/'/g,'')}')">🔊 설명 듣기</button>
+    </div>
+  `).join('');
+}
+
+function clearWrong(){
+  if(confirm('오답노트를 모두 삭제할까요?')){
+    wrongAnswers = [];
+    localStorage.removeItem('wrongAnswers');
+    renderWrong();
+  }
+}
+
+/* TTS (웹 브라우저 내장 음성 합성) */
+function tts(text){
+  if(!('speechSynthesis' in window)){
+    alert('이 브라우저는 음성 합성을 지원하지 않아요.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ko-KR';
+  u.rate = 0.95;
+  u.pitch = 1.1;
+  window.speechSynthesis.speak(u);
+}
+
+/* 모달 */
+function openModal(i){
+  const v = vocabData[i];
+  document.getElementById('modalImg').textContent = v.icon;
+  document.getElementById('modalTitle').textContent = v.term;
+  document.getElementById('modalDesc').textContent = v.desc;
+  document.getElementById('imgModal').classList.add('show');
+}
+function closeModal(){
+  document.getElementById('imgModal').classList.remove('show');
+  window.speechSynthesis.cancel();
+}
+
+/* 탭 전환 */
+document.querySelectorAll('nav button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* 초기 실행 */
+renderVocab();
+renderStudy();
+renderTest();
+renderWrong();
+
+/* 오류 점검용 콘솔 메시지 */
+console.log('✅ 청계중학교 사회 3장 학습 프로그램이 정상적으로 로드되었습니다.');
+console.log('• 단어:', vocabData.length, '개');
+console.log('• 학습 단원:', studyData.length, '개');
+console.log('• 시험 문항:', testData.length, '개');
+</script>
+</body>
+</html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    

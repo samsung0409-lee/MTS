@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<title>청계중 3학년 2학기 시험 대비 학습실</title>
+<meta name="description" content="화성 청계중학교 3학년 2학기 시험 대비 - 수학·과학·사회 학습 자료 모음">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <h1>📖 청계중 3학년 시험 대비 학습실</h1>
+      <p class="sub">화성 청계중학교 · 3학년 2학기 · 수학 / 과학 / 사회</p>
+    </div>
+    <div class="top-right">
+      <div id="ddayBadge" class="dday" title="시험일 설정은 '플래너' 탭에서">D-?</div>
+      <button id="themeBtn" class="icon-btn" aria-label="다크모드">🌙</button>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button data-tab="library" class="active">📚 자료</button>
+    <button data-tab="planner">📅 플래너</button>
+    <button data-tab="timer">⏱ 타이머</button>
+    <button data-tab="tips">📐 공식·팁</button>
+  </nav>
+</header>
+
+<main>
+  <!-- 자료 -->
+  <section id="tab-library" class="tab active">
+    <div class="summary">
+      <div class="sum-card"><b id="sumDone">0</b><span>완료 단원</span></div>
+      <div class="sum-card"><b id="sumPct">0%</b><span>전체 진도</span></div>
+      <div class="sum-card"><b id="sumStar">0</b><span>중요 표시</span></div>
+      <div class="sum-card"><b id="sumToday">0분</b><span>오늘 공부</span></div>
+    </div>
+    <div class="bar-wrap"><div id="totalBar" class="bar"></div></div>
+
+    <div class="filters">
+      <div class="chips" id="subjectChips"></div>
+      <div class="row">
+        <input id="search" type="search" placeholder="🔍 단원 · 메모 검색">
+        <select id="statusFilter">
+          <option value="all">전체</option>
+          <option value="todo">미완료</option>
+          <option value="done">완료</option>
+          <option value="star">⭐ 중요</option>
+          <option value="weak">😵 헷갈림</option>
+        </select>
+        <button id="randomBtn" class="btn accent">🎲 랜덤 복습</button>
+      </div>
+    </div>
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="empty" hidden>조건에 맞는 자료가 없어요.</p>
+  </section>
+
+  <!-- 플래너 -->
+  <section id="tab-planner" class="tab">
+    <div class="panel">
+      <h2>🎯 시험일 설정</h2>
+      <div class="row">
+        <input id="examName" type="text" placeholder="시험 이름 (예: 2학기 기말고사)">
+        <input id="examDate" type="date">
+        <button id="examSave" class="btn">저장</button>
+      </div>
+      <div id="planResult" class="plan-result"></div>
+    </div>
+    <div class="panel">
+      <h2>📊 과목별 진도</h2>
+      <div id="subjectProgress"></div>
+    </div>
+    <div class="panel">
+      <h2>🗓 최근 7일 공부 시간</h2>
+      <div id="weekChart" class="week"></div>
+      <div class="row end"><button id="resetLog" class="btn ghost small">기록 초기화</button></div>
+    </div>
+    <div class="panel">
+      <h2>💾 데이터 백업</h2>
+      <p class="hint">진도·메모·공부기록은 이 기기의 브라우저에 저장돼요. 기기를 바꿀 땐 백업 파일로 옮기세요.</p>
+      <div class="row">
+        <button id="exportBtn" class="btn">내보내기</button>
+        <label class="btn ghost">가져오기<input id="importFile" type="file" accept="application/json" hidden></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- 타이머 -->
+  <section id="tab-timer" class="tab">
+    <div class="panel center">
+      <h2>⏱ 집중 타이머 (뽀모도로)</h2>
+      <div class="mode" id="timerMode">집중</div>
+      <div id="timerDisplay" class="timer">25:00</div>
+      <div class="row center">
+        <button id="tStart" class="btn accent">시작</button>
+        <button id="tPause" class="btn ghost">일시정지</button>
+        <button id="tReset" class="btn ghost">초기화</button>
+      </div>
+      <div class="row center settings">
+        <label>집중 <input id="focusMin" type="number" min="1" max="120" value="25"> 분</label>
+        <label>휴식 <input id="breakMin" type="number" min="1" max="60" value="5"> 분</label>
+      </div>
+      <p class="hint">집중 시간이 끝날 때마다 공부 기록에 자동으로 더해져요. 완료한 집중 세션: <b id="sessionCount">0</b>회 (오늘)</p>
+    </div>
+  </section>
+
+  <!-- 공식·팁 -->
+  <section id="tab-tips" class="tab">
+    <div class="panel">
+      <h2>📐 수학 핵심 공식</h2>
+      <div class="formula-grid">
+        <div class="formula">
+          <h3>삼각비</h3>
+          <p>sin A = 높이 / 빗변<br>cos A = 밑변 / 빗변<br>tan A = 높이 / 밑변</p>
+          <table>
+            <tr><th>각</th><th>sin</th><th>cos</th><th>tan</th></tr>
+            <tr><td>30°</td><td>1/2</td><td>√3/2</td><td>√3/3</td></tr>
+            <tr><td>45°</td><td>√2/2</td><td>√2/2</td><td>1</td></tr>
+            <tr><td>60°</td><td>√3/2</td><td>1/2</td><td>√3</td></tr>
+          </table>
+          <p class="mini">sin²A + cos²A = 1 , tan A = sin A / cos A</p>
+        </div>
+        <div class="formula">
+          <h3>원과 직선</h3>
+          <p>• 현의 수직이등분선은 원의 중심을 지난다.<br>
+             • 원의 중심에서 현에 내린 수선은 현을 이등분한다.<br>
+             • 중심에서 같은 거리에 있는 두 현의 길이는 같다.<br>
+             • 원 밖의 한 점에서 그은 두 접선의 길이는 같다.<br>
+             • 접선 ⊥ 접점을 지나는 반지름</p>
+        </div>
+        <div class="formula">
+          <h3>원주각</h3>
+          <p>• (원주각) = ½ × (중심각)<br>
+             • 같은 호에 대한 원주각의 크기는 모두 같다.<br>
+             • 반원에 대한 원주각 = 90°<br>
+             • 호의 길이는 원주각의 크기에 정비례<br>
+             • 원에 내접하는 사각형: 대각의 합 = 180°<br>
+             • 접선과 현이 이루는 각 = 그 각 안에 있는 호에 대한 원주각</p>
+        </div>
+        <div class="formula">
+          <h3>대푯값과 산포도</h3>
+          <p>• 평균 = 변량의 총합 / 변량의 개수<br>
+             • 중앙값: 크기 순으로 나열했을 때 가운데 값(짝수 개면 가운데 두 값의 평균)<br>
+             • 최빈값: 가장 많이 나타나는 값<br>
+             • 편차 = 변량 − 평균 (편차의 총합은 항상 0)<br>
+             • 분산 = (편차)²의 평균<br>
+             • 표준편차 = √분산 (클수록 흩어져 있음)</p>
+        </div>
+        <div class="formula">
+          <h3>상관관계</h3>
+          <p>• 양의 상관관계: x↑ → y↑<br>
+             • 음의 상관관계: x↑ → y↓<br>
+             • 상관관계 없음: 뚜렷한 경향 없음<br>
+             • 점들이 한 직선에 가까울수록 상관관계가 강하다.</p>
+        </div>
+      </div>
+      <div class="calc panel inner">
+        <h3>🧮 평균·분산·표준편차 계산기</h3>
+        <input id="calcInput" type="text" placeholder="변량을 쉼표로 입력 (예: 3, 5, 7, 9, 11)">
+        <div id="calcOut" class="calc-out"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>✅ 시험 전 체크리스트</h2>
+      <ul id="checklist" class="checklist"></ul>
+    </div>
+    <div class="panel">
+      <h2>💡 시험 공부 팁</h2>
+      <ul class="tips">
+        <li><b>인포그래픽 → 영상/음성 → 슬라이드(PDF)</b> 순서로 보면 큰 흐름부터 세부 내용까지 정리돼요.</li>
+        <li><b>헷갈림 😵</b>으로 표시한 단원을 시험 전날 우선 복습하세요. '랜덤 복습'으로 아는 단원도 점검!</li>
+        <li><b>백지 복습</b>: 자료를 덮고 핵심 개념을 종이에 써 본 뒤 다시 확인하면 기억이 오래가요.</li>
+        <li><b>수학</b>은 공식 암기보다 문제 풀이가 핵심. 틀린 문제는 메모에 번호를 적어 두고 다시 풀기.</li>
+        <li><b>과학</b>은 그래프·실험 결과 해석과 용어의 정확한 뜻을, <b>사회</b>는 개념 간 관계(원인-결과)를 정리하세요.</li>
+        <li><b>음성 자료(m4a)</b>는 이동 중에 들으며 복습하기 좋아요. 배속 조절도 가능해요.</li>
+        <li>집중 25분 + 휴식 5분을 반복하는 <b>타이머</b>로 공부 습관을 만들어 보세요.</li>
+        <li>시험 전날은 새로운 내용보다 <b>오답·헷갈림 복습</b>과 <b>충분한 수면</b>이 더 중요해요.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">청계중 3학년 시험 대비 학습실 · 자료 파일은 <code>build_data.py</code> 실행으로 갱신돼요</footer>
+
+<!-- 뷰어 모달 -->
+<div id="modal" class="modal" hidden>
+  <div class="modal-box">
+    <div class="modal-head">
+      <strong id="modalTitle"></strong>
+      <div>
+        <a id="modalOpen" class="btn ghost small" target="_blank" rel="noopener">새 탭</a>
+        <button id="modalClose" class="btn small">닫기 ✕</button>
+      </div>
+    </div>
+    <div id="modalBody" class="modal-body"></div>
+  </div>
+</div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1021 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>청계중 3학년 수학 - 대푯값과 산포도 (단어장·학습·시험·오답노트)</title>
+<style>
+  :root{
+    --bg:#f7f9fc; --card:#fff; --text:#0f172a; --muted:#475569;
+    --brand:#2563eb; --ok:#16a34a; --warn:#ef4444; --highlight:#fff3cd;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+  header{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid #e5e7eb}
+  .wrap{max-width:1100px;margin:0 auto;padding:16px}
+  h1{margin:0;font-size:20px}
+  nav{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  nav button{background:#eef2ff;color:#1e40af;border:1px solid #c7d2fe;padding:8px 12px;border-radius:8px;cursor:pointer}
+  nav button.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+  main .section{display:none;padding:20px 0 60px}
+  main .section.active{display:block}
+  .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 16px}
+  .btn{background:var(--brand);color:#fff;border:none;border-radius:8px;padding:8px 12px;cursor:pointer}
+  .btn.secondary{background:#e2e8f0;color:#0f172a}
+  .btn.warn{background:var(--warn)}
+  .btn.ok{background:var(--ok)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid #e5e7eb;border-radius:12px;padding:14px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .muted{color:var(--muted)}
+  .badge{font-size:12px;background:#fffbeb;color:#92400e;padding:2px 8px;border-radius:999px;border:1px solid #fde68a}
+  .svgbox{background:#fafafa;border:1px dashed #e5e7eb;border-radius:8px;padding:6px;cursor:zoom-in;margin:8px 0}
+  .small{font-size:12px}
+  .highlight{background:var(--highlight);border-bottom:2px dotted #f59e0b;cursor:help;padding:0 2px;border-radius:2px}
+  .tooltip{position:absolute;background:#111827;color:#fff;border-radius:8px;font-size:12px;padding:8px;max-width:280px;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:60}
+  .tts{background:#f0f9ff;border:1px solid #bae6fd;color:#075985;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px}
+  .list{display:grid;gap:10px}
+  .qcard{border:1px solid #e5e7eb;background:#fff;border-radius:12px;padding:14px}
+  .qcard .choices{display:grid;gap:6px;margin:8px 0}
+  .qcard .choices button{text-align:left;border:1px solid #cbd5e1;background:#fff;border-radius:8px;padding:8px;cursor:pointer}
+  .qcard .choices button.correct{border-color:#22c55e;background:#ecfdf5}
+  .qcard .choices button.wrong{border-color:#ef4444;background:#fef2f2}
+  .qcard .explain{background:#eff6ff;border-left:3px solid var(--brand);padding:10px;border-radius:8px;margin-top:8px}
+  .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .pill{font-size:12px;background:#e0f2fe;color:#075985;padding:2px 6px;border-radius:6px}
+  .result-tag{display:inline-block;font-weight:700;padding:4px 10px;border-radius:999px;font-size:13px}
+  .result-ok{background:#dcfce7;color:#166534}
+  .result-no{background:#fee2e2;color:#991b1b}
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+  .modal.active{display:flex}
+  .modal .panel{background:#fff;border-radius:12px;padding:12px;max-width:92vw;max-height:92vh;overflow:auto}
+  .modal .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+  .modal .hd h4{margin:0}
+  .modal .hd .close{border:none;background:#f1f5f9;padding:6px 10px;border-radius:8px;cursor:pointer}
+  .diag{margin-top:10px;font-size:12px;color:var(--muted)}
+  input[type=text]{padding:6px 8px;border:1px solid #cbd5e1;border-radius:6px;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="row" style="justify-content:space-between">
+      <div>
+        <h1>청계중 3학년 수학 - 대푯값과 산포도</h1>
+        <div class="small muted">단어장 · 학습하기 · 시험보기 · 오답노트 · TTS 지원</div>
+      </div>
+      <div class="row">
+        <span class="badge">TTS</span>
+        <button class="tts" id="btnReadPage">🔊 화면 읽기</button>
+        <button class="tts" id="btnStopTTS">⏹ 멈춤</button>
+      </div>
+    </div>
+    <nav id="menu">
+      <button data-target="vocab" class="active">단어장</button>
+      <button data-target="learn">학습하기</button>
+      <button data-target="exam">시험보기</button>
+      <button data-target="wrong">오답노트</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="section-vocab" class="section active">
+    <div class="toolbar">
+      <button class="btn" id="vocabSpeakAll">🔊 단어 전체 듣기</button>
+      <span class="small muted">그림을 누르면 확대됩니다.</span>
+    </div>
+    <div id="vocabGrid" class="grid"></div>
+  </section>
+
+  <section id="section-learn" class="section">
+    <div class="toolbar">
+      <button class="btn" id="learnSpeak">🔊 핵심 요약 듣기</button>
+      <button class="btn ok" id="startQuickQuiz">바로 미니 시험 (3문항)</button>
+    </div>
+    <article class="card" id="learnContent"></article>
+    <div id="quickQuiz" class="list" style="margin-top:14px"></div>
+  </section>
+
+  <section id="section-exam" class="section">
+    <div class="toolbar">
+      <button class="btn" id="startExam">시험 시작 (10문항)</button>
+      <button class="btn secondary" id="readQuestion">🔊 현재 문제 읽기</button>
+      <span class="pill" id="examProgress">대기 중</span>
+    </div>
+    <div id="examArea" class="list"></div>
+    <div id="examResult" class="card" style="display:none"></div>
+  </section>
+
+  <section id="section-wrong" class="section">
+    <div class="toolbar">
+      <button class="btn" id="retryAllWrong">오답노트 전체 재도전</button>
+      <button class="btn warn" id="clearWrong">오답노트 비우기</button>
+    </div>
+    <div id="wrongList" class="list"></div>
+  </section>
+
+  <div class="diag" id="diag"></div>
+</main>
+
+<div class="modal" id="imgModal">
+  <div class="panel">
+    <div class="hd">
+      <h4 id="modalTitle">그림 확대보기</h4>
+      <button class="close" id="closeModal">닫기</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* ========= 유틸 ========= */
+const $ = (s,p=document)=>p.querySelector(s);
+const $$ = (s,p=document)=>Array.from(p.querySelectorAll(s));
+const on = (el,ev,fn,opt)=>el && el.addEventListener(ev,fn,opt);
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+/* ========= TTS ========= */
+const TTS = (()=>{
+  let voices=[], koVoice=null;
+  const init=()=>{
+    const pick=()=>{
+      voices = speechSynthesis.getVoices();
+      koVoice = voices.find(v=>/ko/i.test(v.lang)) || voices.find(v=>/Korean/i.test(v.name));
+    };
+    if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged=pick; pick(); }
+  };
+  const speak=(text,opts={})=>{
+    if(!('speechSynthesis' in window)){ return; }
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(String(text));
+    if(koVoice) u.voice=koVoice;
+    u.rate=opts.rate??1; u.pitch=opts.pitch??1; u.lang='ko-KR';
+    speechSynthesis.speak(u);
+  };
+  const readPage=()=>{
+    const active=$('.section.active'); if(!active) return;
+    const text=active.innerText.replace(/\s+/g,' ').trim();
+    speak(text.length>380?text.slice(0,380)+'... 더 보려면 화면 읽기를 다시 눌러 주세요.':text);
+  };
+  return {init, speak, readPage};
+})();
+
+/* ========= SVG 헬퍼 ========= */
+const SVGNS='http://www.w3.org/2000/svg';
+function svg(tag,attrs={},children=[]){
+  const el=document.createElementNS(SVGNS,tag);
+  for(const [k,v] of Object.entries(attrs)) el.setAttribute(k,v);
+  children.forEach(c=>el.appendChild(c));
+  return el;
+}
+function svgText(x,y,str,o={}){
+  const t=svg('text',{x,y,'text-anchor':o.anchor||'middle','font-size':o.size||12,fill:o.fill||'#374151'});
+  t.appendChild(document.createTextNode(str));
+  return t;
+}
+function svgContainer(w=300,h=150){
+  const s=svg('svg',{viewBox:`0 0 ${w} ${h}`,width:'100%',height:String(h)});
+  s.style.display='block';
+  return s;
+}
+
+/* ========== 그림 생성기 (문제/단어 공용) ========== */
+function drawDotplot(data, opts={}){
+  // 일직선 위에 점을 찍은 그림 (점그래프)
+  const s=svgContainer();
+  const min=Math.min(...data), max=Math.max(...data);
+  const lo=Math.min(min,0), hi=Math.max(max,lo+1);
+  const W=280, H=120, baseY=90, leftPad=24, rightPad=24;
+  const xOf=v=> leftPad + ((v-lo)/(hi-lo))*(W-leftPad-rightPad);
+  // baseline
+  s.appendChild(svg('line',{x1:leftPad,y1:baseY,x2:W-rightPad,y2:baseY,stroke:'#374151','stroke-width':2}));
+  // ticks
+  for(let v=lo; v<=hi; v++){
+    const x=xOf(v);
+    s.appendChild(svg('line',{x1:x,y1:baseY-4,x2:x,y2:baseY+4,stroke:'#6b7280'}));
+    s.appendChild(svgText(x,baseY+18,String(v),{size:10,fill:'#6b7280'}));
+  }
+  // dots
+  data.forEach(v=> s.appendChild(svg('circle',{cx:xOf(v),cy:baseY,r:6,fill:'#93c5fd',stroke:'#2563eb'})));
+  // optional mean line
+  if(opts.mean!=null){
+    const mx=xOf(opts.mean);
+    s.appendChild(svg('line',{x1:mx,y1:30,x2:mx,y2:baseY+4,stroke:'#f59e0b','stroke-dasharray':'4 3','stroke-width':2}));
+    s.appendChild(svgText(mx,22,`평균 ${opts.mean}`,{fill:'#92400e',size:11}));
+  }
+  // median mark
+  if(opts.median!=null){
+    const mx=xOf(opts.median);
+    s.appendChild(svg('line',{x1:mx,y1:30,x2:mx,y2:baseY+4,stroke:'#10b981','stroke-dasharray':'3 3','stroke-width':2}));
+    s.appendChild(svgText(mx,46,`중앙값 ${opts.median}`,{fill:'#065f46',size:11}));
+  }
+  return s;
+}
+function drawBar(values, labels){
+  // 막대그래프
+  const s=svgContainer();
+  const max=Math.max(...values,1);
+  const w=Math.floor(280/(values.length*1.6));
+  const gap=Math.floor(w*0.6);
+  const base=110;
+  values.forEach((h,i)=>{
+    const x=20 + i*(w+gap);
+    const y=base - (h/max)*80;
+    s.appendChild(svg('rect',{x,y,width:w,height:(h/max)*80,fill:'#bfdbfe',stroke:'#60a5fa'}));
+    s.appendChild(svgText(x+w/2, base+15, labels?labels[i]:String(i+1), {size:10,fill:'#475569'}));
+    s.appendChild(svgText(x+w/2, y-4, String(h), {size:10,fill:'#1e40af'}));
+  });
+  s.appendChild(svg('line',{x1:10,y1:base,x2:280,y2:base,stroke:'#374151'}));
+  return s;
+}
+function drawBoxplot(min,q1,med,q3,max){
+  const s=svgContainer();
+  const minV=Math.min(min,q1-1), maxV=Math.max(max,q3+1);
+  const xOf=v=> 30 + ((v-minV)/(maxV-minV))*(240);
+  const baseY=80;
+  // whisker line
+  s.appendChild(svg('line',{x1:xOf(min),y1:baseY,x2:xOf(max),y2:baseY,stroke:'#94a3b8'}));
+  // box Q1..Q3
+  s.appendChild(svg('rect',{x:xOf(q1),y:50,width:xOf(q3)-xOf(q1),height:60,fill:'#fef9c3',stroke:'#f59e0b'}));
+  // median
+  s.appendChild(svg('line',{x1:xOf(med),y1:40,x2:xOf(med),y2:120,stroke:'#f59e0b','stroke-width':2}));
+  // whisker caps
+  s.appendChild(svg('line',{x1:xOf(min),y1:baseY-8,x2:xOf(min),y2:baseY+8,stroke:'#f59e0b'}));
+  s.appendChild(svg('line',{x1:xOf(max),y1:baseY-8,x2:xOf(max),y2:baseY+8,stroke:'#f59e0b'}));
+  // labels
+  s.appendChild(svgText(xOf(min),baseY+28,'최솟값',{size:10,fill:'#475569'}));
+  s.appendChild(svgText(xOf(max),baseY+28,'최댓값',{size:10,fill:'#475569'}));
+  s.appendChild(svgText(xOf(q1),36,'Q1',{size:10,fill:'#0ea5e9'}));
+  s.appendChild(svgText(xOf(med),36,'중앙값',{size:10,fill:'#92400e'}));
+  s.appendChild(svgText(xOf(q3),36,'Q3',{size:10,fill:'#0ea5e9'}));
+  return s;
+}
+function drawHist(bins){
+  const s=svgContainer();
+  const max=Math.max(...bins);
+  const w=Math.floor(280/(bins.length*1.5));
+  const gap=Math.floor(w*0.5);
+  const base=110;
+  bins.forEach((h,i)=>{
+    const x=20+i*(w+gap);
+    const y=base-(h/max)*85;
+    s.appendChild(svg('rect',{x,y,width:w,height:(h/max)*85,fill:'#bae6fd',stroke:'#38bdf8'}));
+    s.appendChild(svgText(x+w/2,base+15,`${i*5}~`,{size:10,fill:'#475569'}));
+  });
+  s.appendChild(svg('line',{x1:10,y1:base,x2:280,y2:base,stroke:'#374151'}));
+  return s;
+}
+function drawStemLeaf(stems, leaves){
+  // 줄기와 잎 그림
+  const s=svgContainer(280, 18 + stems.length*22);
+  stems.forEach((st,i)=>{
+    const y=20+i*22;
+    s.appendChild(svgText(30,y,`${st} |`,{anchor:'start',size:14,fill:'#1e3a8a'}));
+    s.appendChild(svgText(60,y,(leaves[i]||[]).join('  '),{anchor:'start',size:14,fill:'#0f172a'}));
+  });
+  s.appendChild(svg('line',{x1:25,y1:8,x2:25,y2:20+stems.length*22,stroke:'#94a3b8'}));
+  return s;
+}
+function drawMeanWithArrow(label, value){
+  const s=svgContainer();
+  const x=140;
+  s.appendChild(svg('line',{x1:x,y1:20,x2:x,y2:130,stroke:'#f59e0b','stroke-dasharray':'4 3','stroke-width':2}));
+  s.appendChild(svgText(x,16,label,{fill:'#92400e',size:12}));
+  s.appendChild(svgText(x,80,String(value),{fill:'#f59e0b',size:18}));
+  return s;
+}
+
+/* ========== 단어장 ========== */
+const Terms = [
+  {term:'평균', def:'모든 값을 다 더해서 개수로 나눈 값이에요. 친구들 키를 모두 더해 사람 수로 나누는 것과 같아요. 다만, 아주 크거나 작은 값(이상치) 하나가 있으면 평균이 크게 흔들려요.',
+   draw: ()=>{
+     const s=svgContainer(280,150);
+     s.appendChild(svg('line',{x1:20,y1:120,x2:260,y2:120,stroke:'#374151','stroke-width':2}));
+     const data=[2,3,3,4,5,8]; const mean=data.reduce((a,b)=>a+b,0)/data.length;
+     const xOf=v=> 20+(v-1)*(240/9);
+     data.forEach(v=> s.appendChild(svg('circle',{cx:xOf(v),cy:95,r:6,fill:'#93c5fd',stroke:'#2563eb'})));
+     const mx=xOf(mean);
+     s.appendChild(svg('line',{x1:mx,y1:40,x2:mx,y2:120,stroke:'#f59e0b','stroke-dasharray':'4 3','stroke-width':2}));
+     s.appendChild(svgText(mx,35,'평균',{fill:'#92400e'}));
+     for(let i=1;i<=9;i++){
+       const x=20+(i-1)*(240/9);
+       s.appendChild(svg('line',{x1:x,y1:115,x2:x,y2:125,stroke:'#6b7280'}));
+       s.appendChild(svgText(x,140,String(i),{size:10,fill:'#6b7280'}));
+     }
+     return s;
+   }},
+  {term:'중앙값', def:'값들을 작은 순서로 줄 세웠을 때, 한가운데에 있는 값이에요. 키가 5명일 때는 3번째 사람 키가 중앙값이죠. 이상치가 있어도 잘 흔들리지 않아요.',
+   draw: ()=>{
+     const s=svgContainer(280,150);
+     const data=[1,2,3,4,9];
+     const xOf=v=> 20+(v-1)*(240/9);
+     s.appendChild(svg('line',{x1:20,y1:120,x2:260,y2:120,stroke:'#374151','stroke-width':2}));
+     data.forEach((v,i)=> s.appendChild(svg('circle',{cx:xOf(v),cy:95,r:6,fill:i===2?'#34d399':'#a7f3d0',stroke:'#059669'})));
+     s.appendChild(svg('line',{x1:xOf(3),y1:40,x2:xOf(3),y2:120,stroke:'#10b981','stroke-dasharray':'3 3','stroke-width':2}));
+     s.appendChild(svgText(xOf(3),35,'중앙값(3)',{fill:'#065f46'}));
+     for(let i=1;i<=9;i++){
+       const x=20+(i-1)*(240/9);
+       s.appendChild(svg('line',{x1:x,y1:115,x2:x,y2:125,stroke:'#6b7280'}));
+       s.appendChild(svgText(x,140,String(i),{size:10,fill:'#6b7280'}));
+     }
+     return s;
+   }},
+  {term:'최빈값', def:'가장 많이(자주) 나온 값이에요. 예를 들어 1,2,2,3,2 중에서 2가 3번이라 최빈값은 2예요.',
+   draw: ()=>{
+     const s=svgContainer(280,150);
+     const bars=[1,3,5,2,1], w=36,gap=12,base=120;
+     bars.forEach((h,i)=>{
+       const x=20+i*(w+gap), y=base-h*16;
+       s.appendChild(svg('rect',{x,y,width:w,height:h*16,fill:i===2?'#fde68a':'#bfdbfe',stroke:i===2?'#f59e0b':'#60a5fa'}));
+       s.appendChild(svgText(x+w/2,base+15,String(i+1),{size:11,fill:'#475569'}));
+     });
+     s.appendChild(svgText(20+2*(w+gap)+w/2,30,'최빈값(가장 높은 막대)',{fill:'#92400e'}));
+     return s;
+   }},
+  {term:'범위', def:'가장 큰 값에서 가장 작은 값을 뺀 거예요. (범위 = 최댓값 - 최솟값) 퍼짐을 재는 가장 간단한 방법이에요.',
+   draw: ()=>{
+     const s=svgContainer(280,150);
+     s.appendChild(svg('line',{x1:20,y1:120,x2:260,y2:120,stroke:'#374151','stroke-width':2}));
+     const min=2,max=9, xOf=v=>20+(v-1)*(240/9);
+     s.appendChild(svg('circle',{cx:xOf(min),cy:95,r:6,fill:'#e5e7eb',stroke:'#6b7280'}));
+     s.appendChild(svg('circle',{cx:xOf(max),cy:95,r:6,fill:'#e5e7eb',stroke:'#6b7280'}));
+     s.appendChild(svg('line',{x1:xOf(min),y1:60,x2:xOf(max),y2:60,stroke:'#f97316','stroke-width':3,'marker-end':'url(#arr)','marker-start':'url(#arr)'}));
+     s.appendChild(svg('defs',{},[svg('marker',{id:'arr',markerWidth:6,markerHeight:6,refX:5,refY:3,orient:'auto'},[svg('path',{d:'M0,0 L6,3 L0,6 Z',fill:'#f97316'})])]));
+     s.appendChild(svgText((xOf(min)+xOf(max))/2,50,'범위 = 최댓값 - 최솟값',{fill:'#7c2d12'}));
+     return s;
+   }},
+  {term:'사분위수', def:'데이터를 크기 순서로 4등분하는 경계 값이에요. Q1은 아래에서 25%, Q2는 가운데(중앙값), Q3는 75% 위치예요.',
+   draw: ()=> drawBoxplot(1,3,5,7,9)},
+  {term:'사분위범위(IQR)', def:'IQR = Q3 - Q1. 데이터의 가운데 50%가 얼마나 퍼져 있는지를 알려줘요. 이상치의 영향을 잘 받지 않아요.',
+   draw: ()=>{
+     const s=svgContainer(280,150);
+     s.appendChild(svg('rect',{x:50,y:40,width:200,height:80,fill:'#fff7ed',stroke:'#fb923c'}));
+     s.appendChild(svg('rect',{x:90,y:50,width:130,height:60,fill:'#fde68a',stroke:'#f59e0b'}));
+     s.appendChild(svgText(155,30,'IQR = Q3 - Q1',{fill:'#9a3412'}));
+     s.appendChild(svgText(90,140,'Q1',{fill:'#0ea5e9'}));
+     s.appendChild(svgText(220,140,'Q3',{fill:'#0ea5e9'}));
+     return s;
+   }},
+  {term:'분산', def:'각 값이 평균에서 얼마나 떨어져 있는지를 재서, 그 거리를 제곱한 값들의 평균이에요. 숫자가 클수록 값들이 평균에서 멀리 퍼져 있다는 뜻이에요.',
+   draw: ()=>{
+     const s=svgContainer(280,150);
+     const mx=140;
+     s.appendChild(svg('line',{x1:20,y1:110,x2:260,y2:110,stroke:'#374151'}));
+     [60,90,140,190,220].forEach(x=>{
+       s.appendChild(svg('circle',{cx:x,cy:90,r:6,fill:'#c7d2fe',stroke:'#6366f1'}));
+       s.appendChild(svg('line',{x1:x,y1:90,x2:mx,y2:90,stroke:'#a855f7','stroke-dasharray':'3 3'}));
+     });
+     s.appendChild(svg('line',{x1:mx,y1:50,x2:mx,y2:115,stroke:'#a855f7','stroke-width':2}));
+     s.appendChild(svgText(mx,40,'평균',{fill:'#7e22ce'}));
+     s.appendChild(svgText(140,135,'거리²의 평균',{size:11,fill:'#475569'}));
+     return s;
+   }},
+  {term:'표준편차', def:'분산의 제곱근이에요. 분산은 단위가 커져서(제곱) 비교가 어려운데, 표준편차는 원래 단위와 같아서 퍼짐 정도를 직관적으로 알 수 있어요.',
+   draw: ()=>{
+     const s=svgContainer(280,150);
+     const mx=140;
+     s.appendChild(svg('line',{x1:20,y1:110,x2:260,y2:110,stroke:'#374151'}));
+     [80,110,140,170,200].forEach(x=>{
+       s.appendChild(svg('circle',{cx:x,cy:90,r:6,fill:'#bbf7d0',stroke:'#16a34a'}));
+       s.appendChild(svg('line',{x1:x,y1:90,x2:mx,y2:90,stroke:'#16a34a'}));
+     });
+     s.appendChild(svg('line',{x1:mx,y1:50,x2:mx,y2:115,stroke:'#16a34a','stroke-width':2}));
+     s.appendChild(svgText(mx,40,'평균',{fill:'#166534'}));
+     s.appendChild(svgText(140,135,'√분산 - 원래 단위로 다시',{size:11,fill:'#475569'}));
+     return s;
+   }},
+  {term:'히스토그램', def:'값들을 구간(칸)으로 나눠서, 각 구간에 들어 있는 데이터 개수를 막대로 그린 그래프예요.',
+   draw: ()=> drawHist([2,5,7,4,2])},
+  {term:'상자그림', def:'최솟값, Q1, 중앙값(Q2), Q3, 최댓값을 한눈에 보여주는 그림이에요. 가운데 상자 = Q1~Q3, 상자 안 굵은 선 = 중앙값, 양 끝 가느다란 선 = 최솟값·최댓값이에요.',
+   draw: ()=> drawBoxplot(1,3,5,7,9)}
+];
+
+/* ========== 학습하기 본문 (각 개념에 그림 첨부) ========== */
+function makeLearnFigure(kind){
+  switch(kind){
+    case 'mean': return drawDotplot([2,3,3,4,5,8],{mean:4.17});
+    case 'median': return drawDotplot([1,2,3,4,9],{median:3});
+    case 'mode': return drawBar([1,3,5,2,1],['A','B','C','D','E']);
+    case 'range': return drawDotplot([2,4,7]);
+    case 'box': return drawBoxplot(1,3,5,7,9);
+    case 'iqr': return drawBoxplot(1,3,5,7,9);
+    case 'var': return drawDotplot([60,90,140,190,220].map(v=>v/10),{mean:14});
+    case 'sd': return drawDotplot([8,11,14,17,20],{mean:14});
+    case 'hist': return drawHist([2,5,7,4,2]);
+    case 'stemleaf': return drawStemLeaf([1,2,3],[[2,5],[0,3,7],[1,4,8]]);
+  }
+}
+const LearnHTML = `
+  <h2>대푯값과 산포도 한눈에 정리</h2>
+  <p>데이터의 <b>대표 값</b>은
+    <span class="highlight" data-term="평균">평균</span>,
+    <span class="highlight" data-term="중앙값">중앙값</span>,
+    <span class="highlight" data-term="최빈값">최빈값</span>이에요.</p>
+  <p>데이터가 <b>얼마나 퍼져 있는지</b>(산포도)는
+    <span class="highlight" data-term="범위">범위</span>,
+    <span class="highlight" data-term="사분위범위(IQR)">사분위범위</span>,
+    <span class="highlight" data-term="분산">분산</span>,
+    <span class="highlight" data-term="표준편차">표준편차</span>로 나타내요.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>📌 평균</h3>
+      <p class="muted small">모든 값을 더해 개수로 나눈 값. 이상치에 흔들려요.</p>
+      <div class="svgbox" data-fig="mean"></div>
+      <div class="small muted">점그래프의 주황 점선이 평균이에요.</div>
+    </div>
+    <div class="card">
+      <h3>📌 중앙값</h3>
+      <p class="muted small">작은 순서로 줄 세웠을 때 한가운데 값. 이상치에 강해요.</p>
+      <div class="svgbox" data-fig="median"></div>
+      <div class="small muted">초록 점선이 중앙값이에요.</div>
+    </div>
+    <div class="card">
+      <h3>📌 최빈값</h3>
+      <p class="muted small">가장 자주 나온 값. 막대그래프에서 가장 높은 막대.</p>
+      <div class="svgbox" data-fig="mode"></div>
+    </div>
+    <div class="card">
+      <h3>📌 범위</h3>
+      <p class="muted small">최댓값 - 최솟값. 퍼짐의 가장 간단한 측정.</p>
+      <div class="svgbox" data-fig="range"></div>
+    </div>
+    <div class="card">
+      <h3>📌 상자그림</h3>
+      <p class="muted small">최솟값·Q1·중앙값·Q3·최댓값을 한 그림에 보여줘요.</p>
+      <div class="svgbox" data-fig="box"></div>
+    </div>
+    <div class="card">
+      <h3>📌 IQR</h3>
+      <p class="muted small">Q3 - Q1. 가운데 50%의 퍼짐. 이상치에 강해요.</p>
+      <div class="svgbox" data-fig="iqr"></div>
+    </div>
+    <div class="card">
+      <h3>📌 분산과 표준편차</h3>
+      <p class="muted small">분산 = 거리²의 평균, 표준편차 = √분산.</p>
+      <div class="svgbox" data-fig="sd"></div>
+    </div>
+    <div class="card">
+      <h3>📌 히스토그램</h3>
+      <p class="muted small">구간별 도수를 막대로 나타낸 그래프.</p>
+      <div class="svgbox" data-fig="hist"></div>
+    </div>
+    <div class="card">
+      <h3>📌 줄기와 잎 그림</h3>
+      <p class="muted small">값의 분포를 그대로 보존해서 보여줘요.</p>
+      <div class="svgbox" data-fig="stemleaf"></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:18px">핵심 공식</h3>
+  <ul>
+    <li>평균 = (값의 합) ÷ (개수)</li>
+    <li>범위 = 최댓값 - 최솟값</li>
+    <li>IQR = Q3 - Q1</li>
+    <li>분산 = (각 값이 평균에서 떨어진 거리)²의 평균</li>
+    <li>표준편차 = √분산</li>
+  </ul>
+  <p class="small muted">💡 색이 칠해진 <b>중요 단어</b>를 누르면 쉬운 설명과 🔊 읽기가 나와요.</p>
+`;
+
+/* ========== 문항 데이터 (그림 첨부) ========== */
+let _qSeq=1;
+function MC(q,choices,correct,expl,fig){
+  return {id:'Q'+(_qSeq++), type:'MC', question:q, choices, correctIndex:correct, explanation:expl, tts:q, figure:fig||null};
+}
+function NUM(q,ans,expl,fig){
+  return {id:'Q'+(_qSeq++), type:'NUM', question:q, answerValue:ans, explanation:expl, tts:q, figure:fig||null};
+}
+
+const QuickQuiz = [
+  MC('다음 중 이상치의 영향을 가장 많이 받는 값은?', ['중앙값','최빈값','평균','사분위범위'], 2,
+     '평균은 모든 값을 더해서 나눠요. 이상치 하나가 평균을 크게 흔들 수 있어요.',
+     {kind:'mean'}),
+  NUM('데이터 2, 3, 5, 7의 평균은? (소수 둘째 자리까지)', 4.25,
+      '합계 17 ÷ 4 = 4.25',
+      {kind:'mean', data:[2,3,5,7]}),
+  MC('상자그림에서 상자(box)의 길이가 뜻하는 것은?', ['범위','중앙값','사분위범위(IQR)','분산'], 2,
+     '상자의 길이는 Q3 - Q1, 즉 IQR이에요.',
+     {kind:'box'})
+];
+
+const ExamBank = [
+  MC('데이터 1, 2, 2, 3, 10의 평균은?', ['3.6','3.0','2.6','2.0'], 0,
+     '합계 18 ÷ 5 = 3.6. 큰 값 10이 평균을 끌어올렸어요.',
+     {kind:'mean', data:[1,2,2,3,10]}),
+  MC('데이터 1, 2, 2, 3, 10의 중앙값은?', ['2','2.4','3','2.5'], 0,
+     '정렬하면 1,2,2,3,10 → 가운데 값 2',
+     {kind:'median', data:[1,2,2,3,10]}),
+  MC('데이터 1, 1, 2, 3, 3, 3의 최빈값은?', ['1','2','3','없음'], 2,
+     '3이 세 번으로 가장 많이 나왔어요.',
+     {kind:'mode', data:[1,1,2,3,3,3]}),
+  NUM('데이터 2, 4, 7의 범위는?', 5, '7 - 2 = 5',
+      {kind:'range', data:[2,4,7]}),
+  MC('이상치가 있는 데이터의 대푯값으로 더 적절한 것은?', ['평균','중앙값','최빈값','분산'], 1,
+     '중앙값은 이상치에 흔들리지 않아요.',
+     {kind:'mean', data:[10,11,12,13,90]}),
+  NUM('데이터 4, 6, 8, 10의 평균은?', 7, '합계 28 ÷ 4 = 7',
+      {kind:'mean', data:[4,6,8,10]}),
+  MC('상자그림의 수염(whisker)이 나타내는 것은?', ['평균과 중앙값','최솟값과 최댓값','Q1과 Q3','분산과 표준편차'], 1,
+     '수염은 양 끝 값(최솟값·최댓값)을 가리켜요.',
+     {kind:'box'}),
+  MC('사분위범위(IQR)를 키우는 변화는?', ['모든 값에 같은 수 더하기','모든 값을 같은 수로 곱하기','이상치 1개 제거','데이터 개수 줄이기'], 1,
+     '모든 값을 k배 하면 IQR도 k배가 돼요.',
+     {kind:'box', scale:2}),
+  NUM('데이터 1, 3, 5, 7, 9의 중앙값은?', 5, '가운데 값이 5예요.',
+      {kind:'median', data:[1,3,5,7,9]}),
+  MC('오른쪽 꼬리가 긴 분포에서 더 안정적인 대푯값은?', ['평균','중앙값','최빈값','범위'], 1,
+     '꼬리(이상치) 영향을 덜 받는 중앙값이 안정적이에요.',
+     {kind:'mean', data:[10,12,12,13,40]}),
+  MC('분산과 표준편차의 관계로 알맞은 것은?', ['표준편차 = 분산²','표준편차 = √분산','분산 = √표준편차','관계 없음'], 1,
+     '표준편차는 분산의 제곱근이에요.',
+     {kind:'sd'}),
+  MC('어떤 반 키 비교에서 한 명만 매우 큰 경우, 더 적절한 대푯값은?', ['평균','중앙값','최빈값','표준편차'], 1,
+     '이상치 영향을 덜 받는 중앙값이 적절해요.',
+     {kind:'mean', data:[150,152,154,155,200]})
+];
+
+/* ========== 그림 그리기 헬퍼 (문항 figure.kind 기반) ========== */
+function drawFigure(fig){
+  if(!fig) return null;
+  const kind = fig.kind;
+  const data = fig.data || [];
+  if(kind==='mean') return drawDotplot(data.length?data:[2,3,4,5,6], {mean: data.length?data.reduce((a,b)=>a+b,0)/data.length:4});
+  if(kind==='median'){
+    const sorted=data.slice().sort((a,b)=>a-b);
+    const m = sorted.length%2 ? sorted[(sorted.length-1)/2] : (sorted[sorted.length/2-1]+sorted[sorted.length/2])/2;
+    return drawDotplot(data, {median:m});
+  }
+  if(kind==='mode'){
+    const freq={}; data.forEach(v=> freq[v]=(freq[v]||0)+1);
+    const vals=Object.keys(freq).map(Number).sort((a,b)=>a-b);
+    const heights=vals.map(v=>freq[v]);
+    return drawBar(heights, vals.map(String));
+  }
+  if(kind==='range') return drawDotplot(data);
+  if(kind==='box'){
+    if(data.length){
+      const sorted=data.slice().sort((a,b)=>a-b);
+      const q=(p)=>{ const i=(sorted.length-1)*p; const lo=Math.floor(i), hi=Math.ceil(i); return sorted[lo]+(sorted[hi]-sorted[lo])*(i-lo); };
+      return drawBoxplot(sorted[0], q(0.25), q(0.5), q(0.75), sorted[sorted.length-1]);
+    }
+    return drawBoxplot(1,3,5,7,9);
+  }
+  if(kind==='sd'){
+    const m = data.length? data.reduce((a,b)=>a+b,0)/data.length : 14;
+    return drawDotplot(data.length?data:[8,11,14,17,20],{mean:m});
+  }
+  if(kind==='hist') return drawHist(fig.bins || [2,5,7,4,2]);
+  if(kind==='stemleaf'){
+    const stems=[], leaves=[];
+    data.forEach(v=>{ const s=Math.floor(v/10); const i=stems.indexOf(s);
+      if(i<0){ stems.push(s); leaves.push([v%10]); } else leaves[i].push(v%10);
+    });
+    return drawStemLeaf(stems, leaves);
+  }
+  return null;
+}
+
+/* ========== 오답노트 (localStorage) ========== */
+const LSKEY='wrongNotes_v1';
+let WrongNotes=[];
+try{ WrongNotes=JSON.parse(localStorage.getItem(LSKEY)||'[]'); }catch{ WrongNotes=[]; }
+function saveWrong(){ try{ localStorage.setItem(LSKEY, JSON.stringify(WrongNotes)); }catch{} }
+function addWrong(q, userAns){
+  if(!WrongNotes.some(x=>x.id===q.id)){
+    WrongNotes.push({
+      id:q.id, type:q.type, question:q.question, choices:q.choices||null,
+      answerValue:q.answerValue??null, correctIndex:q.correctIndex??null,
+      explanation:q.explanation, figure:q.figure||null, userAnswer:userAns??null
+    });
+    saveWrong();
+  }
+}
+function removeWrong(id){ WrongNotes=WrongNotes.filter(x=>x.id!==id); saveWrong(); }
+
+/* ========== 렌더: 단어장 ========== */
+function renderVocab(){
+  const grid=$('#vocabGrid'); grid.innerHTML='';
+  Terms.forEach(t=>{
+    const card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`
+      <h3>${t.term}</h3>
+      <p class="muted small">${t.def}</p>
+      <div class="svgbox" role="button" tabindex="0" aria-label="${t.term} 그림 확대"></div>
+      <div class="row" style="margin-top:8px">
+        <button class="tts" data-tts="${t.term}. ${t.def}">🔊 설명 듣기</button>
+        <span class="small muted">중요: ${t.term}</span>
+      </div>
+    `;
+    const box=card.querySelector('.svgbox');
+    const svgNode=t.draw();
+    box.appendChild(svgNode);
+    const open=()=> openModal(svgNode.cloneNode(true), `${t.term} 그림`);
+    on(box,'click',open);
+    on(box,'keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); }});
+    grid.appendChild(card);
+  });
+}
+
+/* ========== 렌더: 학습하기 ========== */
+function renderLearn(){
+  const art=$('#learnContent'); art.innerHTML=LearnHTML;
+  // 학습 본문의 각 svgbox에 그림 채우기
+  art.querySelectorAll('.svgbox[data-fig]').forEach(box=>{
+    const kind=box.getAttribute('data-fig');
+    const svgNode=makeLearnFigure(kind);
+    if(svgNode){
+      box.appendChild(svgNode);
+      on(box,'click',()=> openModal(svgNode.cloneNode(true), '학습 그림'));
+    }
+  });
+  // 중요 단어 툴팁
+  art.querySelectorAll('.highlight').forEach(span=>{
+    const term=span.getAttribute('data-term');
+    const obj=Terms.find(x=>x.term===term);
+    if(obj){
+      span.title=obj.def;
+      on(span,'click',e=>{ e.stopPropagation(); showTooltip(span, `<b>${obj.term}</b><br>${obj.def}<br><button class="tts" data-tts="${obj.term}. ${obj.def}">🔊 읽기</button>`); });
+    }
+  });
+}
+
+/* ========== 툴팁 ========== */
+let tipEl=null;
+function showTooltip(anchor, html){
+  if(tipEl){ tipEl.remove(); tipEl=null; }
+  tipEl=document.createElement('div'); tipEl.className='tooltip'; tipEl.innerHTML=html;
+  document.body.appendChild(tipEl);
+  tipEl.style.visibility='hidden';
+  const r=anchor.getBoundingClientRect();
+  let x=window.scrollX+r.left+r.width/2-tipEl.offsetWidth/2;
+  let y=window.scrollY+r.bottom+8;
+  x=clamp(x,8,window.scrollX+document.documentElement.clientWidth-320);
+  y=Math.max(window.scrollY+8,y);
+  tipEl.style.left=x+'px'; tipEl.style.top=y+'px'; tipEl.style.visibility='visible';
+  on(tipEl,'click',ev=>{ const b=ev.target.closest('[data-tts]'); if(b) TTS.speak(b.getAttribute('data-tts')); });
+  const close=(ev)=>{ if(!tipEl) return; if(!tipEl.contains(ev.target)&&ev.target!==anchor){ tipEl.remove(); tipEl=null; } else on(document,'click',close,{once:true}); };
+  on(document,'click',close,{once:true});
+}
+
+/* ========== 모달 ========== */
+function openModal(node, title='그림'){
+  $('#modalTitle').textContent=title;
+  const body=$('#modalBody'); body.innerHTML='';
+  if(node&&node.tagName==='svg'){
+    node.removeAttribute('width'); node.removeAttribute('height');
+    node.setAttribute('width','760'); node.setAttribute('height','380');
+  }
+  body.appendChild(node);
+  $('#imgModal').classList.add('active');
+}
+function closeModal(){ $('#imgModal').classList.remove('active'); }
+
+/* ========== 문항 렌더 (다음 문제 버튼 직접 클릭) ========== */
+function shuffle(a){ const b=a.slice(); for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]];} return b; }
+function pickExam(n){
+  const mc=ExamBank.filter(q=>q.type==='MC');
+  const num=ExamBank.filter(q=>q.type==='NUM');
+  const half=Math.ceil(n/2);
+  return shuffle(shuffle(mc).slice(0,Math.min(half,mc.length))).concat(
+         shuffle(num).slice(0, n-Math.min(half,mc.length))
+  ).slice(0,n);
+}
+function renderQuestion(q, idx, total, onNext){
+  const wrap=document.createElement('div');
+  wrap.className='qcard';
+  wrap.dataset.id=q.id;
+
+  // 헤더
+  const head=document.createElement('div');
+  head.className='row';
+  head.innerHTML=`<span class="pill">문제 ${idx+1} / ${total}</span>
+                  <b>${q.question}</b>
+                  <button class="tts" data-tts="${q.tts}">🔊 문제 읽기</button>`;
+  wrap.appendChild(head);
+
+  // 그림
+  const figSvg = drawFigure(q.figure);
+  if(figSvg){
+    const box=document.createElement('div');
+    box.className='svgbox';
+    box.title='클릭하면 확대됩니다';
+    box.appendChild(figSvg);
+    on(box,'click',()=> openModal(figSvg.cloneNode(true), `${idx+1}번 문제 그림`));
+    wrap.appendChild(box);
+  }
+
+  // 답안 영역
+  const ansArea=document.createElement('div');
+  wrap.appendChild(ansArea);
+
+  // 채점 결과 + 다음 버튼
+  const resultArea=document.createElement('div');
+  resultArea.style.marginTop='10px';
+  wrap.appendChild(resultArea);
+
+  let answered=false;
+  const finalize=(correct, userAns)=>{
+    if(answered) return;
+    answered=true;
+    const tag=document.createElement('span');
+    tag.className='result-tag ' + (correct?'result-ok':'result-no');
+    tag.textContent = correct ? '정답' : '오답';
+    resultArea.appendChild(tag);
+
+    const ex=document.createElement('div');
+    ex.className='explain';
+    const correctText = q.type==='MC'
+      ? `<b>${q.correctIndex+1}. ${q.choices[q.correctIndex]}</b>`
+      : `<b>${q.answerValue}</b>`;
+    ex.innerHTML = (correct?'정답이에요! ':'아쉬워요. ') + `정답: ${correctText}<br>${q.explanation}
+      <div class="row" style="margin-top:6px">
+        <button class="tts" data-tts="정답 ${q.type==='MC'?q.choices[q.correctIndex]:q.answerValue}. ${q.explanation}">🔊 해설 듣기</button>
+      </div>`;
+    resultArea.appendChild(ex);
+
+    if(!correct) addWrong(q, userAns);
+
+    // 다음 문제 버튼
+    const nextBtn=document.createElement('button');
+    nextBtn.className='btn ok';
+    nextBtn.textContent = (idx >= total-1) ? '결과 보기 →' : '다음 문제 →';
+    nextBtn.style.marginTop='10px';
+    nextBtn.addEventListener('click', ()=> onNext && onNext());
+    resultArea.appendChild(nextBtn);
+  };
+
+  if(q.type==='MC'){
+    const choices=document.createElement('div'); choices.className='choices';
+    q.choices.forEach((c,i)=>{
+      const btn=document.createElement('button');
+      btn.textContent=`${i+1}. ${c}`;
+      btn.addEventListener('click',()=>{
+        if(answered) return;
+        const correct = i===q.correctIndex;
+        if(correct) btn.classList.add('correct');
+        else{ btn.classList.add('wrong'); choices.children[q.correctIndex].classList.add('correct'); }
+        finalize(correct, c);
+      });
+      choices.appendChild(btn);
+    });
+    ansArea.appendChild(choices);
+  } else {
+    const row=document.createElement('div'); row.className='row';
+    const input=document.createElement('input');
+    input.type='text'; input.placeholder='숫자 답 입력';
+    const submit=document.createElement('button');
+    submit.className='btn'; submit.textContent='제출';
+    const check=()=>{
+      if(answered) return;
+      const v=parseFloat(String(input.value).replace(/[^\d.\-]/g,''));
+      const correct = !isNaN(v) && Math.abs(v - q.answerValue) < 1e-6;
+      input.disabled=true; submit.disabled=true;
+      finalize(correct, input.value);
+    };
+    submit.addEventListener('click',check);
+    input.addEventListener('keydown',e=>{ if(e.key==='Enter') check(); });
+    row.appendChild(input); row.appendChild(submit);
+    ansArea.appendChild(row);
+  }
+
+  // 공통 TTS 위임
+  wrap.addEventListener('click',e=>{
+    const b=e.target.closest('[data-tts]'); if(b) TTS.speak(b.getAttribute('data-tts'));
+  });
+  return wrap;
+}
+
+/* ========== 시험 흐름 ========== */
+let exam = {list:[], idx:0, score:0, active:false};
+function startExam(){
+  $('#examArea').innerHTML='';
+  $('#examResult').style.display='none';
+  const list = pickExam(10);
+  if(list.length===0){ $('#examArea').innerHTML='<div class="empty">문항이 없습니다.</div>'; $('#examProgress').textContent='대기 중'; return; }
+  exam = {list, idx:0, score:0, active:true};
+  renderCurrentExam();
+}
+function renderCurrentExam(){
+  const area=$('#examArea'); area.innerHTML='';
+  const q=exam.list[exam.idx];
+  const node = renderQuestion(q, exam.idx, exam.list.length, ()=>{
+    exam.idx++;
+    if(exam.idx>=exam.list.length) finishExam();
+    else renderCurrentExam();
+  });
+  area.appendChild(node);
+  $('#examProgress').textContent = `문항 ${exam.idx+1} / ${exam.list.length}`;
+  setTimeout(()=> TTS.speak(`문제 ${exam.idx+1}. ${q.tts}`), 200);
+  // 자동 스크롤
+  area.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function finishExam(){
+  const area=$('#examArea'); area.innerHTML='';
+  const total=exam.list.length, score=exam.score;
+  const res=$('#examResult'); res.style.display='block';
+  res.innerHTML = `
+    <h3>시험 결과</h3>
+    <p>점수: <span class="score">${score} / ${total}</span> (${Math.round(score/total*100)}점)</p>
+    <p class="muted small">틀린 문제는 자동으로 <b>오답노트</b>에 저장되었어요. 해설을 다시 보고 싶다면 오답노트에서 다시 풀어보세요.</p>
+    <div class="row">
+      <button class="btn" id="retryExam">다시 풀기</button>
+      <button class="btn secondary" id="goWrong">오답노트로</button>
+    </div>
+  `;
+  on($('#retryExam'),'click',startExam);
+  on($('#goWrong'),'click',()=> switchTo('wrong'));
+  $('#examProgress').textContent='완료';
+  TTS.speak(`시험이 끝났어요. ${total}문제 중 ${score}문제를 맞혔습니다. ${Math.round(score/total*100)}점이에요.`);
+  renderWrong();
+  exam.active=false;
+}
+
+/* ========== 미니 시험 (학습하기 페이지) ========== */
+function startQuickQuiz(){
+  const area=$('#quickQuiz'); area.innerHTML='';
+  const list=shuffle(QuickQuiz).slice(0,3);
+  let i=0, score=0;
+  const show=()=>{
+    area.innerHTML='';
+    if(i>=list.length){
+      const r=document.createElement('div'); r.className='card';
+      r.innerHTML = `<b>미니 시험 결과: ${score} / ${list.length}</b>
+        <p class="muted small">틀린 문제는 오답노트에 저장되었어요. 본시험으로 가서 더 풀어보세요!</p>`;
+      area.appendChild(r);
+      TTS.speak(`미니 시험 결과 ${score}문제 맞혔습니다.`);
+      renderWrong();
+      return;
+    }
+    const node = renderQuestion(list[i], i, list.length, ()=>{ i++; setTimeout(show, 200); });
+    area.appendChild(node);
+  };
+  show();
+}
+
+/* ========== 오답노트 ========== */
+function renderWrong(){
+  const box=$('#wrongList'); box.innerHTML='';
+  if(WrongNotes.length===0){
+    box.innerHTML='<div class="empty">아직 저장된 오답이 없어요. 시험에서 틀리면 자동으로 여기에 추가됩니다.</div>';
+    return;
+  }
+  WrongNotes.forEach((q,i)=>{
+    const card=document.createElement('div'); card.className='qcard';
+    const ansText = (q.type==='MC')
+      ? `내 답: <b>${q.userAnswer ?? '?'}</b> · 정답: <b>${q.choices[q.correctIndex]}</b>`
+      : `내 답: <b>${q.userAnswer ?? '?'}</b> · 정답: <b>${q.answerValue}</b>`;
+    card.innerHTML = `
+      <div class="row">
+        <span class="pill">오답 ${i+1}</span>
+        <b>${q.question}</b>
+        <button class="tts" data-tts="${q.question}. ${q.explanation}">🔊 읽기</button>
+      </div>
+      <div class="svgbox" data-fig-id="${q.id}" style="cursor:zoom-in"></div>
+      <div class="small muted">${ansText}</div>
+      <div class="explain">${q.explanation}</div>
+      <div class="row" style="margin-top:6px">
+        <button class="btn ok" data-act="re" data-id="${q.id}">다시 풀기</button>
+        <button class="btn warn" data-act="del" data-id="${q.id}">삭제</button>
+      </div>
+    `;
+    box.appendChild(card);
+
+    // 그림 첨부 (문항과 동일한 그림)
+    const figBox = card.querySelector(`[data-fig-id="${q.id}"]`);
+    const figSvg = drawFigure(q.figure);
+    if(figSvg){
+      figBox.appendChild(figSvg);
+      on(figBox,'click',()=> openModal(figSvg.cloneNode(true), `오답 ${i+1} 그림`));
+    }
+  });
+
+  box.querySelectorAll('button[data-act]').forEach(b=>{
+    on(b,'click',()=>{
+      const id=b.getAttribute('data-id'), act=b.getAttribute('data-act');
+      if(act==='del'){ removeWrong(id); renderWrong(); }
+      else if(act==='re'){
+        const q=WrongNotes.find(x=>x.id===id); if(!q) return;
+        switchTo('exam');
+        const area=$('#examArea'); area.innerHTML='';
+        $('#examResult').style.display='none';
+        $('#examProgress').textContent='오답 재도전 1문항';
+        const node = renderQuestion(q, 0, 1, ()=>{
+          removeWrong(id); renderWrong();
+          const back=document.createElement('div'); back.className='card';
+          back.innerHTML='<b>재도전 완료!</b> 정답을 맞혀 오답노트에서 제거되었어요.';
+          area.appendChild(back);
+        });
+        area.appendChild(node);
+      }
+    });
+  });
+}
+
+/* ========== 메뉴 전환 ========== */
+function switchTo(target){
+  $$('#menu button').forEach(b=>b.classList.toggle('active', b.dataset.target===target));
+  $$('main .section').forEach(s=>s.classList.toggle('active', s.id==='section-'+target));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ========== 초기화 ========== */
+function init(){
+  const diag=[];
+  if(!('speechSynthesis' in window)) diag.push('⚠ 이 브라우저는 TTS를 지원하지 않습니다. Chrome/Edge를 권장합니다.');
+  try{ localStorage.setItem('__t','1'); localStorage.removeItem('__t'); } catch { diag.push('⚠ localStorage를 사용할 수 없어요.'); }
+  $('#diag').textContent=diag.join(' ');
+
+  $$('#menu button').forEach(btn=> on(btn,'click',()=> switchTo(btn.dataset.target)));
+
+  renderVocab();
+  renderLearn();
+  renderWrong();
+
+  TTS.init();
+  on($('#btnReadPage'),'click',TTS.readPage);
+  on($('#btnStopTTS'),'click',()=> speechSynthesis && speechSynthesis.cancel());
+  on($('#vocabSpeakAll'),'click',()=> TTS.speak(Terms.map(t=>`${t.term}. ${t.def}`).join(' ')));
+
+  // 전역 TTS 위임
+  on(document,'click',e=>{
+    const b=e.target.closest('[data-tts]'); if(b) TTS.speak(b.getAttribute('data-tts'));
+  });
+
+  // 학습
+  on($('#learnSpeak'),'click',()=>{
+    TTS.speak('대푯값과 산포도 핵심. 평균은 합계를 개수로 나눈 값. 중앙값은 가운데 값. 최빈값은 가장 많이 나온 값. 범위는 최댓값에서 최솟값을 뺀 값. 사분위범위는 Q3에서 Q1을 뺀 값. 분산은 평균에서의 거리 제곱의 평균이고, 표준편차는 분산의 제곱근이에요.');
+  });
+  on($('#startQuickQuiz'),'click',startQuickQuiz);
+
+  // 시험
+  on($('#startExam'),'click',startExam);
+  on($('#readQuestion'),'click',()=>{
+    const node=$('.section#section-exam .qcard');
+    if(!node) return;
+    const qid=node.dataset.id;
+    const q=exam.list.find(x=>x.id===qid) || WrongNotes.find(x=>x.id===qid);
+    if(q) TTS.speak(q.tts);
+  });
+
+  // 오답
+  on($('#clearWrong'),'click',()=>{
+    if(WrongNotes.length===0) return;
+    if(confirm('오답노트를 모두 비울까요?')){ WrongNotes=[]; saveWrong(); renderWrong(); TTS.speak('오답노트를 모두 비웠어요.'); }
+  });
+  on($('#retryAllWrong'),'click',()=>{
+    if(WrongNotes.length===0){ alert('오답노트가 비어 있어요.'); return; }
+    switchTo('exam');
+    const area=$('#examArea'); area.innerHTML='';
+    $('#examResult').style.display='none';
+    $('#examProgress').textContent = `오답 재도전 ${WrongNotes.length}문항`;
+    let i=0, score=0, list=WrongNotes.slice();
+    const show=()=>{
+      area.innerHTML='';
+      if(i>=list.length){
+        const r=document.createElement('div'); r.className='card';
+        r.innerHTML = `<b>오답 재도전 결과: ${score} / ${list.length}</b>`;
+        area.appendChild(r);
+        renderWrong();
+        return;
+      }
+      const node = renderQuestion(list[i], i, list.length, ()=>{
+        if(score===i) score++; removeWrong(list[i].id); i++; setTimeout(show, 200);
+      });
+      area.appendChild(node);
+    };
+    show();
+  });
+
+  on($('#closeModal'),'click',closeModal);
+  on($('#imgModal'),'click',e=>{ if(e.target.id==='imgModal') closeModal(); });
+  on(document,'keydown',e=>{ if(e.key==='Escape') closeModal(); });
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    

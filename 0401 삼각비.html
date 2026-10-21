@@ -1,0 +1,763 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>삼각비 마스터 - 청계중학교 3학년</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; }
+body { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; color: #2c3e50; line-height: 1.6; }
+
+.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.header h1 { font-size: 1.8em; margin-bottom: 3px; }
+.header p { opacity: 0.9; font-size: 0.95em; }
+
+.nav { background: white; display: flex; justify-content: center; flex-wrap: wrap; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+.nav-btn { background: none; border: none; padding: 15px 20px; cursor: pointer; font-size: 1em; color: #555; border-bottom: 3px solid transparent; transition: all 0.3s; }
+.nav-btn:hover { background: #f0f0f0; }
+.nav-btn.active { color: #667eea; border-bottom-color: #667eea; font-weight: bold; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 25px 20px; }
+.tab-content { display: none; animation: fadeIn 0.4s; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.card { background: white; border-radius: 15px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+.card h2 { color: #667eea; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0; }
+.card h3 { color: #555; margin: 15px 0 10px; }
+
+.formula-box { background: #f8f9ff; border-left: 4px solid #667eea; padding: 12px 15px; margin: 12px 0; border-radius: 8px; font-size: 1.05em; }
+.formula-box .label { display: inline-block; background: #667eea; color: white; padding: 2px 10px; border-radius: 15px; font-size: 0.85em; margin-right: 8px; font-weight: bold; }
+
+.tts-btn { background: #28a745; color: white; border: none; padding: 6px 12px; border-radius: 15px; cursor: pointer; margin-left: 8px; font-size: 0.85em; transition: all 0.3s; }
+.tts-btn:hover { background: #218838; transform: scale(1.05); }
+.tts-stop { background: #dc3545; }
+.tts-stop:hover { background: #c82333; }
+.tts-section { background: #fff3cd; border: 1px solid #ffc107; padding: 8px 12px; border-radius: 8px; margin: 10px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.triangle-svg { display: block; margin: 15px auto; max-width: 380px; width: 100%; }
+.vocab-svg { display: block; margin: 10px auto; max-width: 100%; }
+
+table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+th { background: #667eea; color: white; }
+tr:nth-child(even) { background: #f8f9ff; }
+
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+.vocab-card { background: #f8f9ff; border-radius: 12px; padding: 18px; text-align: center; border: 2px solid #e8edff; transition: all 0.3s; }
+.vocab-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2); }
+.vocab-card h3 { color: #667eea; margin-bottom: 10px; font-size: 1.1em; }
+.vocab-card p { font-size: 0.9em; color: #555; margin: 8px 0; line-height: 1.5; }
+.vocab-card .tts-row { margin-top: 10px; display: flex; gap: 5px; justify-content: center; flex-wrap: wrap; }
+
+/* ⭐ 학습하기 연습 문제 스타일 */
+.practice-box { background: linear-gradient(135deg, #fff8e8 0%, #fff3cd 100%); border: 2px solid #ffc107; border-radius: 12px; padding: 20px; margin-top: 20px; }
+.practice-box h3 { color: #d39e00; margin-bottom: 12px; }
+.practice-q { background: white; padding: 15px; border-radius: 10px; margin: 12px 0; border-left: 4px solid #ffc107; }
+.practice-q-title { font-weight: bold; color: #856404; margin-bottom: 10px; }
+.practice-options { list-style: none; padding: 0; }
+.practice-options li { padding: 8px 12px; margin: 5px 0; background: #f8f9ff; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+.practice-options li:hover { border-color: #ffc107; background: #fff8e8; }
+.practice-options li.correct { background: #d4edda; border-color: #28a745; color: #155724; font-weight: bold; }
+.practice-options li.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+.practice-options li.disabled { pointer-events: none; opacity: 0.7; }
+.practice-explain { margin-top: 10px; padding: 10px; background: #d1ecf1; border-left: 4px solid #17a2b8; border-radius: 5px; display: none; color: #0c5460; font-size: 0.95em; }
+.practice-score { display: inline-block; background: #ffc107; color: white; padding: 3px 12px; border-radius: 15px; font-size: 0.9em; font-weight: bold; margin-left: 10px; }
+
+.quiz-container { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+.quiz-progress { text-align: center; margin-bottom: 20px; color: #666; font-weight: bold; }
+.question { font-size: 1.15em; margin-bottom: 20px; padding: 18px; background: #f8f9ff; border-radius: 10px; font-weight: 500; }
+.options { list-style: none; }
+.option { padding: 14px; margin: 8px 0; background: white; border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer; transition: all 0.3s; }
+.option:hover { border-color: #667eea; background: #f8f9ff; transform: translateX(5px); }
+.option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+.option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+.option.disabled { pointer-events: none; opacity: 0.7; }
+.explanation { margin-top: 18px; padding: 14px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 5px; }
+
+.btn-group { display: flex; gap: 10px; margin-top: 20px; justify-content: center; flex-wrap: wrap; }
+.btn { background: #667eea; color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-size: 1em; transition: all 0.3s; }
+.btn:hover { background: #5568d3; transform: translateY(-2px); }
+.btn-secondary { background: #6c757d; }
+.btn-secondary:hover { background: #5a6268; }
+.btn-warn { background: #ffc107; color: #333; }
+.btn-warn:hover { background: #e0a800; }
+
+.score-display { text-align: center; padding: 30px; }
+.score-display .score { font-size: 3.5em; color: #667eea; font-weight: bold; margin: 15px 0; }
+
+.wrong-item { background: #fff3cd; padding: 15px; margin: 10px 0; border-radius: 10px; border-left: 4px solid #dc3545; }
+.wrong-item strong { color: #856404; }
+.wrong-item .explain { color: #856404; margin-top: 6px; font-size: 0.95em; }
+
+@media (max-width: 600px) {
+    .header h1 { font-size: 1.4em; }
+    .nav-btn { padding: 12px 12px; font-size: 0.9em; }
+    .container { padding: 15px; }
+    .card { padding: 18px; }
+    .vocab-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>📐 삼각비 마스터</h1>
+    <p>청계중학교 3학년 수학 · 쉽게 배우고 바로 시험보자!</p>
+</div>
+
+<div class="nav">
+    <button class="nav-btn active" data-tab="vocab">📖 단어장</button>
+    <button class="nav-btn" data-tab="learn">📚 학습하기</button>
+    <button class="nav-btn" data-tab="quiz">✏️ 시험보기</button>
+    <button class="nav-btn" data-tab="wrong">❌ 오답노트</button>
+</div>
+
+<div class="container">
+
+    <!-- ===== 단어장 ===== -->
+    <div id="vocab" class="tab-content active">
+        <div class="card">
+            <h2>📖 삼각비 핵심 단어장</h2>
+            <div class="tts-section">
+                <span>🔊 단어장 전체 설명 듣기:</span>
+                <button class="tts-btn" onclick="speak('삼각비 핵심 단어장입니다. 직각삼각형, 빗변, 대변, 인접변, 사인, 코사인, 탄젠트를 그림과 함께 배워봅시다.')">전체 설명</button>
+                <button class="tts-stop tts-btn" onclick="stopSpeaking()">⏹ 정지</button>
+            </div>
+            <p style="margin-bottom: 15px; color: #666;">그림을 보면서 단어의 의미를 쉽게 익혀보세요!</p>
+
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h3>📐 직각삼각형</h3>
+                    <svg class="vocab-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,30 40,170 180,170" fill="#e8f0ff" stroke="#667eea" stroke-width="2.5"/>
+                        <rect x="40" y="150" width="20" height="20" fill="none" stroke="#667eea" stroke-width="2"/>
+                        <path d="M 40 50 A 20 20 0 0 1 55 60" fill="none" stroke="#dc3545" stroke-width="2"/>
+                        <path d="M 50 170 A 20 20 0 0 0 50 150" fill="none" stroke="#28a745" stroke-width="2"/>
+                        <path d="M 145 170 A 20 20 0 0 0 165 160" fill="none" stroke="#ffc107" stroke-width="2"/>
+                        <text x="30" y="22" fill="#dc3545" font-size="14" font-weight="bold">30°</text>
+                        <text x="20" y="180" fill="#28a745" font-size="14" font-weight="bold">90°</text>
+                        <text x="160" y="195" fill="#ffc107" font-size="14" font-weight="bold">60°</text>
+                    </svg>
+                    <p>한 꼭짓각이 <strong>90°(직각)</strong>인 삼각형</p>
+                    <div class="tts-row">
+                        <button class="tts-btn" onclick="speak('직각삼각형. 한 꼭짓각이 90도인 삼각형입니다.')">🔊 단어</button>
+                        <button class="tts-btn" onclick="speak('직각삼각형은 한 꼭짓각이 90도인 삼각형이에요. 삼각비는 모두 이 직각삼각형에서 사용됩니다.')">🔊 설명</button>
+                    </div>
+                </div>
+
+                <div class="vocab-card">
+                    <h3>📏 빗변 (c)</h3>
+                    <svg class="vocab-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,30 40,170 180,170" fill="#fff5e8" stroke="#666" stroke-width="1.5"/>
+                        <rect x="40" y="150" width="20" height="20" fill="none" stroke="#666" stroke-width="2"/>
+                        <line x1="40" y1="30" x2="180" y2="170" stroke="#dc3545" stroke-width="4"/>
+                        <text x="100" y="100" fill="#dc3545" font-size="18" font-weight="bold">빗변 (c)</text>
+                        <text x="30" y="25" fill="#666" font-size="13">A</text>
+                        <text x="20" y="180" fill="#666" font-size="13">C</text>
+                        <text x="185" y="185" fill="#666" font-size="13">B</text>
+                    </svg>
+                    <p>직각의 <strong>맞은편</strong> 변. <strong>가장 긴 변</strong></p>
+                    <div class="tts-row">
+                        <button class="tts-btn" onclick="speak('빗변. 직각의 맞은편에 있는 변, 가장 긴 변입니다.')">🔊 단어</button>
+                        <button class="tts-btn" onclick="speak('빗변은 직각의 맞은편에 있는 변으로, 항상 가장 긴 변입니다.')">🔊 설명</button>
+                    </div>
+                </div>
+
+                <div class="vocab-card">
+                    <h3>📏 대변 (a)</h3>
+                    <svg class="vocab-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,30 40,170 180,170" fill="#e8f8e8" stroke="#666" stroke-width="1.5"/>
+                        <rect x="40" y="150" width="20" height="20" fill="none" stroke="#666" stroke-width="2"/>
+                        <line x1="40" y1="170" x2="180" y2="170" stroke="#28a745" stroke-width="4"/>
+                        <line x1="40" y1="30" x2="180" y2="170" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="40" y1="30" x2="40" y2="170" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <text x="95" y="195" fill="#28a745" font-size="18" font-weight="bold">대변 (a)</text>
+                        <text x="30" y="25" fill="#dc3545" font-size="15" font-weight="bold">A</text>
+                    </svg>
+                    <p>각 A의 <strong>맞은편</strong>에 있는 변</p>
+                    <div class="tts-row">
+                        <button class="tts-btn" onclick="speak('대변. 어떤 각의 맞은편에 있는 변입니다.')">🔊 단어</button>
+                        <button class="tts-btn" onclick="speak('대변은 어떤 각을 봤을 때, 그 각의 맞은편에 있는 변이에요.')">🔊 설명</button>
+                    </div>
+                </div>
+
+                <div class="vocab-card">
+                    <h3>📏 인접변 (b)</h3>
+                    <svg class="vocab-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,30 40,170 180,170" fill="#fff8e8" stroke="#666" stroke-width="1.5"/>
+                        <rect x="40" y="150" width="20" height="20" fill="none" stroke="#666" stroke-width="2"/>
+                        <line x1="40" y1="170" x2="40" y2="30" stroke="#ffc107" stroke-width="4"/>
+                        <line x1="40" y1="30" x2="180" y2="170" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="40" y1="170" x2="180" y2="170" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <text x="0" y="100" fill="#ffc107" font-size="18" font-weight="bold">인접변(b)</text>
+                        <text x="30" y="25" fill="#dc3545" font-size="15" font-weight="bold">A</text>
+                    </svg>
+                    <p>각 A에 <strong>직접 붙어</strong> 있는 변 (빗변 제외)</p>
+                    <div class="tts-row">
+                        <button class="tts-btn" onclick="speak('인접변. 어떤 각에 직접 붙어 있는 변, 빗변이 아닌 쪽입니다.')">🔊 단어</button>
+                        <button class="tts-btn" onclick="speak('인접변은 어떤 각에 직접 붙어 있는 변이에요. 빗변이 아닌 쪽입니다.')">🔊 설명</button>
+                    </div>
+                </div>
+
+                <div class="vocab-card">
+                    <h3>📐 sin A</h3>
+                    <svg class="vocab-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,30 40,170 180,170" fill="#ffe8e8" stroke="#666" stroke-width="1.5"/>
+                        <rect x="40" y="150" width="20" height="20" fill="none" stroke="#666" stroke-width="2"/>
+                        <line x1="40" y1="170" x2="180" y2="170" stroke="#dc3545" stroke-width="3.5"/>
+                        <line x1="40" y1="30" x2="180" y2="170" stroke="#667eea" stroke-width="3.5"/>
+                        <text x="95" y="195" fill="#dc3545" font-size="15" font-weight="bold">대변 a</text>
+                        <text x="100" y="95" fill="#667eea" font-size="15" font-weight="bold">빗변 c</text>
+                    </svg>
+                    <p style="font-size: 1.1em;"><strong>sin A = a / c</strong></p>
+                    <p style="font-size: 0.85em; color: #888;">💡 "<strong>사대빗</strong>"</p>
+                    <div class="tts-row">
+                        <button class="tts-btn" onclick="speak('사인 A는 a 나누기 c, 사대빗으로 외우세요.')">🔊</button>
+                    </div>
+                </div>
+
+                <div class="vocab-card">
+                    <h3>📐 cos A</h3>
+                    <svg class="vocab-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,30 40,170 180,170" fill="#e8f0ff" stroke="#666" stroke-width="1.5"/>
+                        <rect x="40" y="150" width="20" height="20" fill="none" stroke="#666" stroke-width="2"/>
+                        <line x1="40" y1="30" x2="40" y2="170" stroke="#28a745" stroke-width="3.5"/>
+                        <line x1="40" y1="30" x2="180" y2="170" stroke="#667eea" stroke-width="3.5"/>
+                        <text x="-2" y="100" fill="#28a745" font-size="15" font-weight="bold">인접변 b</text>
+                        <text x="100" y="95" fill="#667eea" font-size="15" font-weight="bold">빗변 c</text>
+                    </svg>
+                    <p style="font-size: 1.1em;"><strong>cos A = b / c</strong></p>
+                    <p style="font-size: 0.85em; color: #888;">💡 "<strong>코인빗</strong>"</p>
+                    <div class="tts-row">
+                        <button class="tts-btn" onclick="speak('코사인 A는 b 나누기 c, 코인빗으로 외우세요.')">🔊</button>
+                    </div>
+                </div>
+
+                <div class="vocab-card">
+                    <h3>📐 tan A</h3>
+                    <svg class="vocab-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,30 40,170 180,170" fill="#fff5e8" stroke="#666" stroke-width="1.5"/>
+                        <rect x="40" y="150" width="20" height="20" fill="none" stroke="#666" stroke-width="2"/>
+                        <line x1="40" y1="170" x2="180" y2="170" stroke="#dc3545" stroke-width="3.5"/>
+                        <line x1="40" y1="30" x2="40" y2="170" stroke="#28a745" stroke-width="3.5"/>
+                        <text x="95" y="195" fill="#dc3545" font-size="15" font-weight="bold">대변 a</text>
+                        <text x="-2" y="100" fill="#28a745" font-size="15" font-weight="bold">인접변 b</text>
+                    </svg>
+                    <p style="font-size: 1.1em;"><strong>tan A = a / b</strong></p>
+                    <p style="font-size: 0.85em; color: #888;">💡 "<strong>탄대인</strong>"</p>
+                    <div class="tts-row">
+                        <button class="tts-btn" onclick="speak('탄젠트 A는 a 나누기 b, 탄대인으로 외우세요.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 학습하기 (연습 문제 포함) ===== -->
+    <div id="learn" class="tab-content">
+
+        <!-- 1. 삼각비의 정의 -->
+        <div class="card">
+            <h2>1️⃣ 삼각비의 정의</h2>
+            <div class="tts-section">
+                <button class="tts-btn" onclick="speak('삼각비의 정의. 직각삼각형에서 각의 크기에 따라 변의 비율을 나타내는 값입니다. 사인, 코사인, 탄젠트 세 가지가 있습니다.')">🔊 전체 듣기</button>
+                <button class="tts-stop tts-btn" onclick="stopSpeaking()">⏹ 정지</button>
+            </div>
+
+            <p>직각삼각형에서 각 A를 기준으로 세 변의 비율을 삼각비라고 해요.</p>
+
+            <svg class="triangle-svg" viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="60,40 60,240 260,240" fill="#e8f0ff" stroke="#667eea" stroke-width="2"/>
+                <rect x="60" y="220" width="20" height="20" fill="none" stroke="#667eea" stroke-width="2"/>
+                <text x="30" y="35" fill="#dc3545" font-size="22" font-weight="bold">A</text>
+                <text x="270" y="250" fill="#333" font-size="14" font-weight="bold">B</text>
+                <text x="40" y="260" fill="#333" font-size="14" font-weight="bold">C</text>
+                <path d="M 60 65 A 25 25 0 0 1 80 70" fill="none" stroke="#dc3545" stroke-width="2"/>
+                <text x="170" y="135" fill="#667eea" font-size="18" font-weight="bold">빗변 c</text>
+                <text x="135" y="265" fill="#dc3545" font-size="18" font-weight="bold">대변 a</text>
+                <text x="-5" y="148" fill="#28a745" font-size="18" font-weight="bold">인접변 b</text>
+            </svg>
+
+            <div class="formula-box"><span class="label">sin A</span> <strong>대변 / 빗변</strong> = a / c</div>
+            <div class="formula-box"><span class="label">cos A</span> <strong>인접변 / 빗변</strong> = b / c</div>
+            <div class="formula-box"><span class="label">tan A</span> <strong>대변 / 인접변</strong> = a / b</div>
+
+            <!-- ⭐ 연습 문제 1 -->
+            <div class="practice-box" id="practice1">
+                <h3>✏️ 지금 바로 풀어보기 <span class="practice-score" id="score1">0 / 3</span> <button class="tts-btn" style="margin-left:auto; background:#17a2b8;" onclick="speak('섹션 1. 삼각비의 정의 연습 문제 3문항입니다.')">🔊 문제 듣기</button></h3>
+                <div id="p1q1" class="practice-q">
+                    <div class="practice-q-title">Q1. sin A는 무엇을 무엇으로 나눈 값인가요?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p1q1', 0, 1)">① 인접변 / 빗변</li>
+                        <li onclick="checkPractice('p1q1', 1, 1)">② 대변 / 빗변</li>
+                        <li onclick="checkPractice('p1q1', 2, 1)">③ 대변 / 인접변</li>
+                        <li onclick="checkPractice('p1q1', 3, 1)">④ 빗변 / 대변</li>
+                    </ul>
+                    <div class="practice-explain">💡 sin A = <strong>대변 / 빗변</strong>. "사대빗"으로 외우세요!</div>
+                </div>
+                <div id="p1q2" class="practice-q">
+                    <div class="practice-q-title">Q2. tan A의 분모는 무엇인가요?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p1q2', 0, 1)">① 대변</li>
+                        <li onclick="checkPractice('p1q2', 1, 1)">② 빗변</li>
+                        <li onclick="checkPractice('p1q2', 2, 1)">③ 인접변</li>
+                        <li onclick="checkPractice('p1q2', 3, 1)">④ 직각</li>
+                    </ul>
+                    <div class="practice-explain">💡 tan A = 대변 / <strong>인접변</strong>. "탄대인" 기억나죠?</div>
+                </div>
+                <div id="p1q3" class="practice-q">
+                    <div class="practice-q-title">Q3. 다음 중 빗변에 대한 설명으로 옳은 것은?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p1q3', 0, 1)">① 항상 가장 짧은 변이다</li>
+                        <li onclick="checkPractice('p1q3', 1, 1)">② 직각의 맞은편에 있는 변이다</li>
+                        <li onclick="checkPractice('p1q3', 2, 1)">③ 각 A의 대변이다</li>
+                        <li onclick="checkPractice('p1q3', 3, 1)">④ 각 A의 인접변이다</li>
+                    </ul>
+                    <div class="practice-explain">💡 빗변은 <strong>직각의 맞은편</strong>에 있는 가장 긴 변입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 특수한 각 -->
+        <div class="card">
+            <h2>2️⃣ 특수한 각의 삼각비 값</h2>
+            <div class="tts-section">
+                <button class="tts-btn" onclick="speak('특수한 각의 삼각비 값. 삼십도, 사십오도, 육십도의 삼각비 값을 꼭 기억해야 합니다.')">🔊 전체 듣기</button>
+                <button class="tts-stop tts-btn" onclick="stopSpeaking()">⏹ 정지</button>
+            </div>
+
+            <p>🎯 시험에 자주 나오는 30°, 45°, 60° 값을 표로 정리했어요!</p>
+
+            <table>
+                <tr><th>각도</th><th>sin</th><th>cos</th><th>tan</th></tr>
+                <tr><td><strong>30°</strong></td><td>1/2</td><td>√3/2</td><td>1/√3</td></tr>
+                <tr><td><strong>45°</strong></td><td>√2/2</td><td>√2/2</td><td>1</td></tr>
+                <tr><td><strong>60°</strong></td><td>√3/2</td><td>1/2</td><td>√3</td></tr>
+            </table>
+
+            <!-- ⭐ 연습 문제 2 -->
+            <div class="practice-box" id="practice2">
+                <h3>✏️ 지금 바로 풀어보기 <span class="practice-score" id="score2">0 / 3</span> <button class="tts-btn" style="margin-left:auto; background:#17a2b8;" onclick="speak('섹션 2. 특수한 각의 삼각비 연습 문제 3문항입니다.')">🔊 문제 듣기</button></h3>
+                <div id="p2q1" class="practice-q">
+                    <div class="practice-q-title">Q1. sin 30°의 값은?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p2q1', 0, 2)">① √3/2</li>
+                        <li onclick="checkPractice('p2q1', 1, 2)">② 1/2</li>
+                        <li onclick="checkPractice('p2q1', 2, 2)">③ √2/2</li>
+                        <li onclick="checkPractice('p2q1', 3, 2)">④ 1</li>
+                    </ul>
+                    <div class="practice-explain">💡 sin 30° = <strong>1/2</strong>. 가장 기본 값이에요!</div>
+                </div>
+                <div id="p2q2" class="practice-q">
+                    <div class="practice-q-title">Q2. tan 45°의 값은?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p2q2', 0, 2)">① √3</li>
+                        <li onclick="checkPractice('p2q2', 1, 2)">② 1/√3</li>
+                        <li onclick="checkPractice('p2q2', 2, 2)">③ 1</li>
+                        <li onclick="checkPractice('p2q2', 3, 2)">④ √2</li>
+                    </ul>
+                    <div class="practice-explain">💡 tan 45° = <strong>1</strong>. 가장 외우기 쉬운 값!</div>
+                </div>
+                <div id="p2q3" class="practice-q">
+                    <div class="practice-q-title">Q3. cos 60°의 값은?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p2q3', 0, 2)">① 1/2</li>
+                        <li onclick="checkPractice('p2q3', 1, 2)">② √2/2</li>
+                        <li onclick="checkPractice('p2q3', 2, 2)">③ √3/2</li>
+                        <li onclick="checkPractice('p2q3', 3, 2)">④ 1</li>
+                    </ul>
+                    <div class="practice-explain">💡 cos 60° = <strong>1/2</strong>. sin 30°과 같은 값!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 삼각비의 관계 -->
+        <div class="card">
+            <h2>3️⃣ 삼각비의 관계</h2>
+            <div class="tts-section">
+                <button class="tts-btn" onclick="speak('삼각비의 관계. 사인 제곱 에이 더하기 코사인 제곱 에이는 1이고, 탄젠트 에이는 사인 에이를 코사인 에이로 나눈 값과 같습니다.')">🔊 전체 듣기</button>
+                <button class="tts-stop tts-btn" onclick="stopSpeaking()">⏹ 정지</button>
+            </div>
+
+            <div class="formula-box"><strong>📌 핵심 공식 1:</strong> sin²A + cos²A = 1</div>
+            <div class="formula-box"><strong>📌 핵심 공식 2:</strong> tan A = sin A / cos A</div>
+
+            <p>💡 <strong>예시:</strong> sin A = 3/5 일 때 (A는 예각),</p>
+            <ul style="padding-left: 20px; line-height: 2;">
+                <li>cos²A = 1 - 9/25 = 16/25 → <strong>cos A = 4/5</strong></li>
+                <li>tan A = (3/5) ÷ (4/5) = <strong>3/4</strong></li>
+            </ul>
+
+            <!-- ⭐ 연습 문제 3 -->
+            <div class="practice-box" id="practice3">
+                <h3>✏️ 지금 바로 풀어보기 <span class="practice-score" id="score3">0 / 3</span> <button class="tts-btn" style="margin-left:auto; background:#17a2b8;" onclick="speak('섹션 3. 삼각비의 관계 연습 문제 3문항입니다.')">🔊 문제 듣기</button></h3>
+                <div id="p3q1" class="practice-q">
+                    <div class="practice-q-title">Q1. sin²A + cos²A = ?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p3q1', 0, 3)">① 0</li>
+                        <li onclick="checkPractice('p3q1', 1, 3)">② 1</li>
+                        <li onclick="checkPractice('p3q1', 2, 3)">③ 2</li>
+                        <li onclick="checkPractice('p3q1', 3, 3)">④ sin A</li>
+                    </ul>
+                    <div class="practice-explain">💡 가장 중요한 항등식! <strong>sin²A + cos²A = 1</strong></div>
+                </div>
+                <div id="p3q2" class="practice-q">
+                    <div class="practice-q-title">Q2. tan A는 sin A와 cos A로 어떻게 나타내나요?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p3q2', 0, 3)">① sin A × cos A</li>
+                        <li onclick="checkPractice('p3q2', 1, 3)">② sin A + cos A</li>
+                        <li onclick="checkPractice('p3q2', 2, 3)">③ sin A / cos A</li>
+                        <li onclick="checkPractice('p3q2', 3, 3)">④ cos A / sin A</li>
+                    </ul>
+                    <div class="practice-explain">💡 tan A = <strong>sin A / cos A</strong></div>
+                </div>
+                <div id="p3q3" class="practice-q">
+                    <div class="practice-q-title">Q3. sin A = 3/5일 때, cos A의 값은? (A는 예각)</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p3q3', 0, 3)">① 3/4</li>
+                        <li onclick="checkPractice('p3q3', 1, 3)">② 4/5</li>
+                        <li onclick="checkPractice('p3q3', 2, 3)">③ 5/4</li>
+                        <li onclick="checkPractice('p3q3', 3, 3)">④ 3/5</li>
+                    </ul>
+                    <div class="practice-explain">💡 cos²A = 1 - 9/25 = 16/25 → cos A = <strong>4/5</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 삼각비의 활용 -->
+        <div class="card">
+            <h2>4️⃣ 삼각비의 활용</h2>
+            <div class="tts-section">
+                <button class="tts-btn" onclick="speak('삼각비의 활용. 삼각비는 실생활에서 높이, 거리, 넓이 등을 구할 때 유용하게 사용됩니다.')">🔊 전체 듣기</button>
+                <button class="tts-stop tts-btn" onclick="stopSpeaking()">⏹ 정지</button>
+            </div>
+
+            <p><strong>🌳 활용 1: 높은 곳의 높이</strong></p>
+            <div class="formula-box"><strong>높이 = 거리 × tan(각도)</strong></div>
+            <p><strong>📝 예시:</strong> 10m 떨어진 곳에서 45° 올려다본 건물의 높이 = 10 × tan 45° = <strong>10m</strong></p>
+
+            <p style="margin-top: 20px;"><strong>📏 활용 2: 삼각형의 넓이</strong></p>
+            <div class="formula-box">삼각형의 넓이 = <strong>½ × a × b × sin C</strong></div>
+            <p><strong>📝 예시:</strong> 6cm, 8cm 변과 그 사이 30° → ½ × 6 × 8 × sin 30° = <strong>12 cm²</strong></p>
+
+            <!-- ⭐ 연습 문제 4 -->
+            <div class="practice-box" id="practice4">
+                <h3>✏️ 지금 바로 풀어보기 <span class="practice-score" id="score4">0 / 3</span> <button class="tts-btn" style="margin-left:auto; background:#17a2b8;" onclick="speak('섹션 4. 삼각비의 활용 연습 문제 3문항입니다.')">🔊 문제 듣기</button></h3>
+                <div id="p4q1" class="practice-q">
+                    <div class="practice-q-title">Q1. 20m 떨어진 곳에서 30° 올려다본 나무의 높이는?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p4q1', 0, 4)">① 10m</li>
+                        <li onclick="checkPractice('p4q1', 1, 4)">② 10√3 m</li>
+                        <li onclick="checkPractice('p4q1', 2, 4)">③ 20/√3 m</li>
+                        <li onclick="checkPractice('p4q1', 3, 4)">④ 20m</li>
+                    </ul>
+                    <div class="practice-explain">💡 높이 = 20 × tan 30° = 20 × 1/√3 = <strong>20/√3 m</strong></div>
+                </div>
+                <div id="p4q2" class="practice-q">
+                    <div class="practice-q-title">Q2. 두 변이 4cm, 10cm이고 그 사이 각이 90°인 삼각형의 넓이는?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p4q2', 0, 4)">① 20 cm²</li>
+                        <li onclick="checkPractice('p4q2', 1, 4)">② 40 cm²</li>
+                        <li onclick="checkPractice('p4q2', 2, 4)">③ 10 cm²</li>
+                        <li onclick="checkPractice('p4q2', 3, 4)">④ 4 cm²</li>
+                    </ul>
+                    <div class="practice-explain">💡 ½ × 4 × 10 × sin 90° = 20 × 1 = <strong>20 cm²</strong></div>
+                </div>
+                <div id="p4q3" class="practice-q">
+                    <div class="practice-q-title">Q3. 삼각형의 넓이 공식 "½ab sin C"에서 C는 무엇인가요?</div>
+                    <ul class="practice-options">
+                        <li onclick="checkPractice('p4q3', 0, 4)">① 변 a의 길이</li>
+                        <li onclick="checkPractice('p4q3', 1, 4)">② 변 b의 길이</li>
+                        <li onclick="checkPractice('p4q3', 2, 4)">③ 두 변 a, b 사이의 각</li>
+                        <li onclick="checkPractice('p4q3', 3, 4)">④ 빗변의 길이</li>
+                    </ul>
+                    <div class="practice-explain">💡 C는 두 변 a, b <strong>사이의 각</strong>이에요.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 시험보기 ===== -->
+    <div id="quiz" class="tab-content">
+        <div class="quiz-container" id="quizStart">
+            <h2 style="text-align: center; color: #667eea;">✏️ 시험을 시작해볼까요?</h2>
+            <p style="text-align: center; margin: 20px 0;">총 10문항 · 매 문제마다 정답과 해설 제공 🚀</p>
+            <div style="text-align: center;">
+                <button class="btn" onclick="startQuiz()">시험 시작하기</button>
+            </div>
+        </div>
+
+        <div class="quiz-container" id="quizArea" style="display:none">
+            <div class="quiz-progress">
+                <span id="quizProgress">문제 1 / 10</span>
+                <span style="float: right;">점수: <span id="currentScore">0</span></span>
+            </div>
+            <div class="question" id="questionText"></div>
+            <ul class="options" id="optionsList"></ul>
+            <div class="explanation" id="explanationText"></div>
+            <div class="btn-group">
+                <button class="tts-btn" id="speakQBtn" onclick="speakCurrentQuestion()">🔊 문제 다시 듣기</button>
+                <button class="tts-stop tts-btn" onclick="stopSpeaking()">⏹ 정지</button>
+                <button class="btn" id="nextBtn" onclick="nextQuestion()" style="display:none">다음 문제 →</button>
+            </div>
+        </div>
+
+        <div class="quiz-container score-display" id="quizResult" style="display:none">
+            <h2>🎉 시험 결과</h2>
+            <div class="score"><span id="finalScore">0</span> / 10</div>
+            <p id="resultMessage" style="font-size: 1.2em;"></p>
+            <div class="btn-group">
+                <button class="btn" onclick="startQuiz()">🔄 다시 풀기</button>
+                <button class="btn btn-secondary" onclick="showTab('wrong')">❌ 오답 확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 오답노트 ===== -->
+    <div id="wrong" class="tab-content">
+        <div class="card">
+            <h2>❌ 오답노트</h2>
+            <p>시험에서 틀렸던 문제들을 모아서 보여드려요.</p>
+            <div style="margin: 12px 0;">
+                <button class="tts-btn" onclick="speak('오답노트입니다. 틀렸던 문제들을 다시 복습해서 실력을 키워봅시다.')">🔊 안내 듣기</button>
+                <button class="tts-btn btn-secondary" onclick="clearWrongAnswers()">🗑 오답 초기화</button>
+            </div>
+            <div id="wrongList">
+                <p style="text-align:center; padding: 20px; color: #888;">아직 틀린 문제가 없어요! 시험을 풀어보세요 😊</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+let currentQuiz = [];
+let currentQuestion = 0;
+let score = 0;
+let wrongAnswers = [];
+let savedWrongAnswers = [];
+let currentQText = '';
+
+// 연습 문제 채점 데이터
+const practiceAnswers = {
+    'p1q1': 1, 'p1q2': 2, 'p1q3': 1,
+    'p2q1': 1, 'p2q2': 2, 'p2q3': 0,
+    'p3q1': 1, 'p3q2': 2, 'p3q3': 1,
+    'p4q1': 2, 'p4q2': 0, 'p4q3': 2
+};
+const practiceScores = { 1: 0, 2: 0, 3: 0, 4: 0 };
+const practiceAnswered = { 1: new Set(), 2: new Set(), 3: new Set(), 4: new Set() };
+
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        showTab(this.dataset.tab);
+    });
+});
+
+function showTab(tabName) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    stopSpeaking();
+    if (tabName === 'wrong') renderWrongList();
+}
+
+function speak(text) {
+    if (!('speechSynthesis' in window)) {
+        alert('이 브라우저는 음성 출력을 지원하지 않습니다. Chrome, Edge, Safari 등을 사용해주세요.');
+        return;
+    }
+    speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ko-KR';
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    speechSynthesis.speak(utterance);
+}
+
+function stopSpeaking() {
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+}
+
+// ⭐ 학습하기 연습 문제 채점
+function checkPractice(qId, selected, section) {
+    const qDiv = document.getElementById(qId);
+    const options = qDiv.querySelectorAll('.practice-options li');
+    const explain = qDiv.querySelector('.practice-explain');
+
+    if (qDiv.dataset.answered === 'true') return;
+    qDiv.dataset.answered = 'true';
+
+    options.forEach(opt => { opt.classList.add('disabled'); opt.onclick = null; });
+
+    const correct = practiceAnswers[qId];
+    if (selected === correct) {
+        options[selected].classList.add('correct');
+        practiceScores[section]++;
+        speak('정답입니다! ' + explain.textContent.replace(/💡/g, ''));
+    } else {
+        options[selected].classList.add('wrong');
+        options[correct].classList.add('correct');
+        speak('틀렸습니다. ' + explain.textContent.replace(/💡/g, ''));
+    }
+
+    explain.style.display = 'block';
+    document.getElementById('score' + section).textContent = practiceScores[section] + ' / 3';
+}
+
+const allQuestions = [
+    { question: "직각삼각형에서 sin A의 값은?", options: ["인접변 / 빗변", "대변 / 빗변", "대변 / 인접변", "빗변 / 인접변"], correct: 1, explanation: "sin A는 ∠A의 대변을 빗변으로 나눈 값입니다. '대빗'이라고 외우면 쉬워요!" },
+    { question: "sin 30°의 값은?", options: ["√3/2", "√2/2", "1/2", "√3"], correct: 2, explanation: "sin 30° = 1/2입니다." },
+    { question: "cos 60°의 값은?", options: ["1/2", "√2/2", "√3/2", "1"], correct: 0, explanation: "cos 60° = 1/2입니다." },
+    { question: "tan 45°의 값은?", options: ["√3", "1/√3", "1", "√2"], correct: 2, explanation: "tan 45° = 1입니다." },
+    { question: "다음 중 삼각비의 항등식이 <strong>아닌</strong> 것은?", options: ["sin²A + cos²A = 1", "tan A = sin A / cos A", "sin A = tan A × cos A", "sin A + cos A = 1"], correct: 3, explanation: "sin A + cos A = 1이 <strong>아닙니다</strong>!" },
+    { question: "tan A를 sin A와 cos A로 나타내면?", options: ["sin A × cos A", "sin A + cos A", "sin A / cos A", "cos A / sin A"], correct: 2, explanation: "tan A = sin A / cos A" },
+    { question: "sin 60°의 값은?", options: ["1/2", "√3/2", "√2/2", "1"], correct: 1, explanation: "sin 60° = √3/2" },
+    { question: "cos 45°의 값은?", options: ["1/2", "√3/2", "1", "√2/2"], correct: 3, explanation: "cos 45° = √2/2" },
+    { question: "다음 중 tan 60°의 값은?", options: ["√3", "1/√3", "1", "√2"], correct: 0, explanation: "tan 60° = √3" },
+    { question: "sin 45° + cos 45°의 값은?", options: ["1", "√2", "2√2", "√2/2"], correct: 1, explanation: "√2/2 + √2/2 = √2" },
+    { question: "sin A = 3/5일 때, cos A의 값은? (단, A는 예각)", options: ["3/4", "4/5", "5/3", "5/4"], correct: 1, explanation: "cos²A = 1 - 9/25 = 16/25, cos A = 4/5" },
+    { question: "건물에서 10m 떨어진 곳에서 꼭대기를 올려다보니 45°였다면 높이는?", options: ["5m", "10m", "10√3 m", "10√2 m"], correct: 1, explanation: "10 × tan 45° = 10 × 1 = 10m" },
+    { question: "삼각형의 넓이 공식으로 두 변과 그 사이 각을 이용하는 것은?", options: ["½ × 밑변 × 높이", "½ × a × b × sin C", "a × b × sin C", "½ × a × b × tan C"], correct: 1, explanation: "삼각형의 넓이 = ½ × a × b × sin C" },
+    { question: "다음 중 직각삼각형의 변에 대한 설명으로 옳은 것은?", options: ["빗변은 가장 짧은 변이다", "대변은 어떤 각의 맞은편 변이다", "인접변은 빗변이 될 수 있다", "대변과 인접변의 길이는 항상 같다"], correct: 1, explanation: "대변은 어떤 각의 맞은편에 있는 변" },
+    { question: "tan 30°의 값은?", options: ["√3", "1", "√3/3 (또는 1/√3)", "√2"], correct: 2, explanation: "tan 30° = 1/√3 = √3/3" }
+];
+
+function startQuiz() {
+    currentQuiz = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 10);
+    currentQuestion = 0;
+    score = 0;
+    wrongAnswers = [];
+    document.getElementById('quizStart').style.display = 'none';
+    document.getElementById('quizResult').style.display = 'none';
+    document.getElementById('quizArea').style.display = 'block';
+    document.getElementById('currentScore').textContent = '0';
+    showQuestion();
+}
+
+function showQuestion() {
+    const q = currentQuiz[currentQuestion];
+    currentQText = q.question;
+    document.getElementById('quizProgress').textContent = `문제 ${currentQuestion + 1} / 10`;
+    document.getElementById('questionText').innerHTML = q.question;
+
+    const optionsList = document.getElementById('optionsList');
+    optionsList.innerHTML = '';
+    q.options.forEach((opt, i) => {
+        const li = document.createElement('li');
+        li.className = 'option';
+        li.innerHTML = `${['①', '②', '③', '④'][i]} ${opt}`;
+        li.onclick = () => selectOption(i, li);
+        optionsList.appendChild(li);
+    });
+
+    document.getElementById('explanationText').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('currentScore').textContent = score;
+    speak(q.question.replace(/<[^>]*>/g, ''));
+}
+
+function speakCurrentQuestion() {
+    speak(currentQText.replace(/<[^>]*>/g, ''));
+}
+
+function selectOption(idx, element) {
+    const q = currentQuiz[currentQuestion];
+    const options = document.querySelectorAll('.option');
+    options.forEach(opt => { opt.classList.add('disabled'); opt.onclick = null; });
+
+    if (idx === q.correct) {
+        element.classList.add('correct');
+        score++;
+        document.getElementById('currentScore').textContent = score;
+        speak('정답입니다! ' + q.explanation.replace(/<[^>]*>/g, ''));
+    } else {
+        element.classList.add('wrong');
+        options[q.correct].classList.add('correct');
+        wrongAnswers.push(q);
+        speak('틀렸습니다. ' + q.explanation.replace(/<[^>]*>/g, ''));
+    }
+
+    const expl = document.getElementById('explanationText');
+    expl.innerHTML = '💡 <strong>해설:</strong> ' + q.explanation;
+    expl.style.display = 'block';
+    document.getElementById('nextBtn').style.display = 'inline-block';
+}
+
+function nextQuestion() {
+    stopSpeaking();
+    currentQuestion++;
+    if (currentQuestion >= 10) showResult();
+    else showQuestion();
+}
+
+function showResult() {
+    document.getElementById('quizArea').style.display = 'none';
+    document.getElementById('quizResult').style.display = 'block';
+    document.getElementById('finalScore').textContent = score;
+
+    let msg = '';
+    if (score >= 9) msg = '🏆 완벽해요! 삼각비 마스터!';
+    else if (score >= 7) msg = '👍 잘했어요! 조금만 더 노력하면 완벽할 거예요!';
+    else if (score >= 5) msg = '📚 괜찮아요. 학습하기 탭에서 다시 복습해볼까요?';
+    else msg = '💪 힘내요! 학습하기 탭을 꼭 복습하고 다시 도전해보세요!';
+
+    document.getElementById('resultMessage').textContent = msg;
+    speak('시험이 끝났습니다. ' + score + '점입니다. ' + msg);
+    savedWrongAnswers = [...wrongAnswers];
+    renderWrongList();
+}
+
+function renderWrongList() {
+    const list = document.getElementById('wrongList');
+    if (savedWrongAnswers.length === 0 && wrongAnswers.length === 0) {
+        list.innerHTML = '<p style="text-align:center; padding: 20px; color: #888;">아직 틀린 문제가 없어요! 시험을 풀어보세요 😊</p>';
+        return;
+    }
+    const all = [...new Set([...savedWrongAnswers, ...wrongAnswers])];
+    list.innerHTML = '<h3 style="margin: 15px 0; color: #dc3545;">총 ' + all.length + '문제 틀림</h3>';
+    all.forEach((q, i) => {
+        list.innerHTML += `
+            <div class="wrong-item">
+                <strong>Q${i+1}. ${q.question}</strong>
+                <p style="margin: 6px 0;"><strong>정답:</strong> ${q.options[q.correct]}</p>
+                <p class="explain">💡 ${q.explanation}</p>
+                <button class="tts-btn" style="margin-top:8px;" onclick="speak('문제 ' + ${i+1} + '. ${q.question.replace(/<[^>]*>/g, '')}. 정답은 ${q.options[q.correct]}입니다. ${q.explanation.replace(/<[^>]*>/g, '')}')">🔊 듣기</button>
+            </div>
+        `;
+    });
+}
+
+function clearWrongAnswers() {
+    savedWrongAnswers = [];
+    wrongAnswers = [];
+    renderWrongList();
+    speak('오답노트를 초기화했습니다.');
+}
+</script>
+</body>
+</html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
